@@ -23,4 +23,5 @@ public class UserProfileDTO
     public string IdentityUserId { get; set; }
 
     public IdentityUser IdentityUser { get; set; }
+    public List<UserChoresDTO> UserChores {get; set; }
 }

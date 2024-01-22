@@ -13,6 +13,6 @@ public class UserProfile
     [Required]
     public string Address { get; set; }
     public string IdentityUserId { get; set; }
-
     public IdentityUser IdentityUser { get; set; }
+    public List<UserChores> UserChores {get; set; }
 }
