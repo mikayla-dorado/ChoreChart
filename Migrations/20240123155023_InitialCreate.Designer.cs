@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChoreChart.Migrations
 {
     [DbContext(typeof(ChoreChartDbContext))]
-    [Migration("20240122170511_InitialCreate")]
+    [Migration("20240123155023_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,7 @@ namespace ChoreChart.Migrations
                             Description = "Wipe down all kitchen counters",
                             DueDate = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Clean Counters",
-                            Status = "Haven't Started"
+                            Status = "Pending"
                         },
                         new
                         {
@@ -98,7 +98,7 @@ namespace ChoreChart.Migrations
                             Description = "Organize totes",
                             DueDate = new DateTime(2024, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Organize Storage Totes",
-                            Status = "Havn't Started"
+                            Status = "Pending"
                         },
                         new
                         {
@@ -292,7 +292,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "a619f26c-e139-4880-ba2d-f0c654323107",
+                            ConcurrencyStamp = "28f3737f-7779-4853-a7e0-20080d634e34",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -391,13 +391,13 @@ namespace ChoreChart.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7229e2ea-ea8b-4fb0-8965-890520263eb1",
+                            ConcurrencyStamp = "84997de9-c0fe-4850-b4e3-c5b5c09c58aa",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEIK3X4Qv7/oym4BPW4Ny2EUi7307gMb081K0ykUQxPfFwFPGtG450+V8zoSG5DyEzw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOOwf0bx5RJy+/gkfMDmN+iLcEDIYgGh9M80EbtvatuWzVfVYVPvbWBGVxjVf4V5Dw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bc7476cf-9d76-442b-9783-952837a73d80",
+                            SecurityStamp = "398bbc94-21b9-480d-b0dc-2f78e343c099",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
@@ -506,7 +506,7 @@ namespace ChoreChart.Migrations
                         .IsRequired();
 
                     b.HasOne("ChoreChart.Models.UserProfile", "UserProfile")
-                        .WithMany()
+                        .WithMany("UserChores")
                         .HasForeignKey("UserProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -578,6 +578,11 @@ namespace ChoreChart.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ChoreChart.Models.UserProfile", b =>
+                {
+                    b.Navigation("UserChores");
                 });
 #pragma warning restore 612, 618
         }

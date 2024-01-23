@@ -10,15 +10,28 @@ export const UserProfileDetails = () => {
 
     useEffect(() => {
         if (id) {
-            getUserProfileById(id).then(obj => setUserProfile(obj))
+            getUserProfileById(id).then(obj =>
+                setUserProfile(obj))
         }
     }, [id])
 
-    const handleStatusChange = (choreId, newStatus) => {
-        // Update the state or make an API call to update the status
-        // You can implement the logic based on your specific requirements
-        console.log(`Chore ID: ${choreId}, New Status: ${newStatus}`);
-    };
+
+    // const handleStatusChange = (choreId, newStatus) => {
+
+    //     const updatedUserChores = userProfile.userChores.map((chores) => {
+    //       if (chores.id === choreId) {
+    //         return { ...chores, status: newStatus };
+    //       } else {
+    //         return chores;
+    //       }
+    //     });
+
+    //     setUserProfile((prevProfile) => ({
+    //       ...prevProfile,
+    //       userChores: updatedUserChores,
+    //     }));
+    //   };
+
 
     return (
         <div>
@@ -43,11 +56,12 @@ export const UserProfileDetails = () => {
                                 {userProfile?.userChores?.map(chores => (
                                     <li key={chores.id}>
                                         <strong>{chores?.chore?.name}</strong>
+                                        <span style={{ color: 'blue' }}>{`[${chores?.status}]`}</span>
                                     </li>
                                 ))}
                             </ul>
                         </td>
-                        <td>
+                        {/* <td>
                             <FormGroup>
                                 {userProfile?.userChores?.map(chores => (
                                     <div key={chores.id}>
@@ -84,59 +98,10 @@ export const UserProfileDetails = () => {
                                     </div>
                                 ))}
                             </FormGroup>
-                        </td>
-                        {/* <td> */}
-                        {/* {userProfile.userChores && userProfile.userChores.map(chores => (
-                                    <div key={chores.id} style={{ marginBottom: "10px" }}>
-                                        <div>
-                                            <strong>{chores?.chore?.name}</strong>
-                                        </div>
-                                        <FormGroup check>
-                                            <Label check>
-                                                <Input
-                                                    type="radio"
-                                                    name={`status-${chores.id}`}
-                                                    value="Pending"
-                                                    checked={chores?.status === "Pending"}
-                                                    onChange={() => handleStatusChange(chores.id, "Pending")}
-                                                />{" "}
-                                                Pending
-                                            </Label>
-                                            <Label check>
-                                                <Input
-                                                    type="radio"
-                                                    name={`status-${chores.id}`}
-                                                    value="In Progress"
-                                                    checked={chores?.status === "In Progress"}
-                                                    onChange={() => handleStatusChange(chores.id, "In Progress")}
-                                                />{" "}
-                                                In Progress
-                                            </Label>
-                                            <Label check>
-                                                <Input
-                                                    type="radio"
-                                                    name={`status-${chores.id}`}
-                                                    value="Completed"
-                                                    checked={chores?.status === "Completed"}
-                                                    onChange={() => handleStatusChange(chores.id, "Completed")}
-                                                />{" "}
-                                                Completed
-                                            </Label>
-                                        </FormGroup>
-                                    </div>
-                                ))}
-                            
-                        </td> */}
-                        {/* <td>
-                            <ul>
-                                {userProfile?.userChores?.map(chores => (
-                                    <li key={chores.id}>{chores?.status}</li>
-                                ))}
-                            </ul>
                         </td> */}
                     </tr>
                 </tbody>
             </Table>
-        </div>
+        </div >
     )
 }
