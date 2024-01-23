@@ -94,7 +94,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetUserProfilesById(int id)
     {
         UserProfile foundUserProfiles = _dbContext
@@ -131,5 +131,32 @@ public class UserProfileController : ControllerBase
             }).ToList()
         };
         return Ok(userProfileDTO);
+    }
+
+//an admin can delete a user
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult DeleteUserProfile(int id)
+    {
+        UserProfile userProfileDelete = _dbContext.UserProfiles.FirstOrDefault(up => up.Id == id);
+        if (userProfileDelete == null)
+        {
+            return NotFound();
+        }
+
+        _dbContext.UserProfiles.Remove(userProfileDelete);
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
+    //create a user
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public IActionResult PostUser(UserProfile userProfile)
+    {
+        _dbContext.UserProfiles.Add(userProfile);
+        _dbContext.SaveChanges();
+        return Created($"/userprofiles/{userProfile.Id}", userProfile);
     }
 }
