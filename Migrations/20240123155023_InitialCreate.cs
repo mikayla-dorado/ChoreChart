@@ -243,12 +243,12 @@ namespace ChoreChart.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "a619f26c-e139-4880-ba2d-f0c654323107", "Admin", "admin" });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "28f3737f-7779-4853-a7e0-20080d634e34", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "7229e2ea-ea8b-4fb0-8965-890520263eb1", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEIK3X4Qv7/oym4BPW4Ny2EUi7307gMb081K0ykUQxPfFwFPGtG450+V8zoSG5DyEzw==", null, false, "bc7476cf-9d76-442b-9783-952837a73d80", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "84997de9-c0fe-4850-b4e3-c5b5c09c58aa", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEOOwf0bx5RJy+/gkfMDmN+iLcEDIYgGh9M80EbtvatuWzVfVYVPvbWBGVxjVf4V5Dw==", null, false, "398bbc94-21b9-480d-b0dc-2f78e343c099", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "chores",
@@ -257,10 +257,10 @@ namespace ChoreChart.Migrations
                 {
                     { 1, "Dust all wood surfaces", new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dust", "In Progress" },
                     { 2, "Sweep all floors", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sweep", "Completed" },
-                    { 3, "Wipe down all kitchen counters", new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Counters", "Haven't Started" },
+                    { 3, "Wipe down all kitchen counters", new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Counters", "Pending" },
                     { 4, "Mop all floors after sweeping", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mop", "Completed" },
                     { 5, "Wash all Dishes", new DateTime(2024, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "Do Dishes", "In Progress" },
-                    { 6, "Organize totes", new DateTime(2024, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Organize Storage Totes", "Havn't Started" },
+                    { 6, "Organize totes", new DateTime(2024, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Organize Storage Totes", "Pending" },
                     { 7, "Fold and put away clean laudry", new DateTime(2024, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Laundry", "In Progress" }
                 });
 

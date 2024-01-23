@@ -94,7 +94,7 @@ public class UserProfileController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetUserProfilesById(int id)
     {
         UserProfile foundUserProfiles = _dbContext
