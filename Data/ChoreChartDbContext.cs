@@ -49,6 +49,7 @@ public class ChoreChartDbContext : IdentityDbContext<IdentityUser>
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
             FirstName = "Joe",
             LastName = "Shepherd",
+            Email = "admina@strator.comx",
             Address = "101 Main Street",
         });
         modelBuilder.Entity<Chore>().HasData(new Chore[]

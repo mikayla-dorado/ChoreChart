@@ -232,6 +232,10 @@ namespace ChoreChart.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -255,6 +259,7 @@ namespace ChoreChart.Migrations
                         {
                             Id = 1,
                             Address = "101 Main Street",
+                            Email = "admina@strator.comx",
                             FirstName = "Joe",
                             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             LastName = "Shepherd"
@@ -290,7 +295,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "28f3737f-7779-4853-a7e0-20080d634e34",
+                            ConcurrencyStamp = "41ee3225-874e-4ff5-bab3-2e2c4e581366",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -389,13 +394,13 @@ namespace ChoreChart.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "84997de9-c0fe-4850-b4e3-c5b5c09c58aa",
+                            ConcurrencyStamp = "f94d4c83-2b4f-4fc7-a32b-98da9105d8df",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEOOwf0bx5RJy+/gkfMDmN+iLcEDIYgGh9M80EbtvatuWzVfVYVPvbWBGVxjVf4V5Dw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAauquAYGy8U/XcpnaZViSpdMUxl0D6nz6hDpQvEogEh44jFGtO26VFEG5sc/6VuNw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "398bbc94-21b9-480d-b0dc-2f78e343c099",
+                            SecurityStamp = "9cd4ed25-de53-4464-b01b-ed63af0b40e5",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

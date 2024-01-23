@@ -56,49 +56,19 @@ export const UserProfileDetails = () => {
                                 {userProfile?.userChores?.map(chores => (
                                     <li key={chores.id}>
                                         <strong>{chores?.chore?.name}</strong>
-                                        <span style={{ color: 'blue' }}>{`[${chores?.status}]`}</span>
                                     </li>
                                 ))}
                             </ul>
                         </td>
-                        {/* <td>
-                            <FormGroup>
+                        <td>
+                            <ul>
                                 {userProfile?.userChores?.map(chores => (
-                                    <div key={chores.id}>
-                                        <Label>
-                                            <Input
-                                                type="radio"
-                                                name={`status-${chores.id}`}
-                                                value="Pending"
-                                                checked={chores?.status === "Pending"}
-                                                onChange={() => handleStatusChange(chores.id, "Pending")}
-                                            />{" "}
-                                            Pending
-                                        </Label>
-                                        <Label check>
-                                            <Input
-                                                type="radio"
-                                                name={`status-${chores.id}`}
-                                                value="In Progress"
-                                                checked={chores?.status === "In Progress"}
-                                                onChange={() => handleStatusChange(chores.id, "In Progress")}
-                                            />{" "}
-                                            In Progress
-                                        </Label>
-                                        <Label>
-                                            <Input
-                                                type="radio"
-                                                name={`status-${chores.id}`}
-                                                value="Completed"
-                                                checked={chores?.status === "Completed"}
-                                                onChange={() => handleStatusChange(chores.id, "Completed")}
-                                            />{" "}
-                                            Completed
-                                        </Label>
-                                    </div>
+                                    <li key={chores.id}>
+                                        <strong>{chores?.chore?.status}</strong>
+                                    </li>
                                 ))}
-                            </FormGroup>
-                        </td> */}
+                            </ul>
+                        </td>
                     </tr>
                 </tbody>
             </Table>
