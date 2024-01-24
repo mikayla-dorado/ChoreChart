@@ -6,6 +6,7 @@ import { UserProfileList } from "./userProfiles/userProfileList";
 import { Home } from "./Home"
 import { UserProfileDetails } from "./userProfiles/userProfileDetails";
 import { CreateNewUser } from "./userProfiles/CreateNewUser";
+import { ChoreList } from "./chores/ChoreList";
 
 
 
@@ -38,6 +39,13 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
               <CreateNewUser loggedInUser={loggedInUser} />
             </AuthorizedRoute>
             }
+          />
+        </Route>
+        <Route path="chores">
+          <Route index element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+            <ChoreList />
+          </AuthorizedRoute>
+          }
           />
         </Route>
         <Route
