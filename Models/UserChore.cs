@@ -11,9 +11,4 @@ public class UserChores
     public Room Room { get; set; }
     public int UserProfileId { get; set; }
     public UserProfile UserProfile { get; set; }
-
-    internal object Select(Func<object, UserChoresDTO> value)
-    {
-        throw new NotImplementedException();
-    }
 }

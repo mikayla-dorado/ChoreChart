@@ -93,6 +93,7 @@ public class UserProfileController : ControllerBase
         return NoContent();
     }
 
+//get user profiles by id
     [HttpGet("{id}")]
     [Authorize]
     public IActionResult GetUserProfilesById(int id)
@@ -108,18 +109,18 @@ public class UserProfileController : ControllerBase
         {
             return NotFound();
         }
-
-        UserProfileDTO userProfileDTO = new UserProfileDTO
+          return Ok(new UserProfileDTO
         {
             Id = foundUserProfiles.Id,
             FirstName = foundUserProfiles.FirstName,
             LastName = foundUserProfiles.LastName,
             Address = foundUserProfiles.Address,
-            Email = foundUserProfiles.Email,
+            Email = foundUserProfiles.IdentityUser.Email,
             UserChores = foundUserProfiles.UserChores.Select(uc => new UserChoresDTO
             {
                 Id = uc.Id,
                 RoomId = uc.RoomId,
+                ChoreId = uc.ChoreId,
                 Chore = new ChoreDTO
                 {
                     Id = uc.Chore.Id,
@@ -129,9 +130,9 @@ public class UserProfileController : ControllerBase
                     Status = uc.Chore.Status
                 }
             }).ToList()
-        };
-        return Ok(userProfileDTO);
+        });
     }
+
 
 //an admin can delete a user
     [HttpDelete("{id}")]
