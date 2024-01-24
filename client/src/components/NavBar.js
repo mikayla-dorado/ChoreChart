@@ -37,6 +37,15 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                                         ""
                                     }
                                 </NavItem>
+                                <NavItem onClick={() => setOpen(false)}>
+                                    {loggedInUser.roles[0] === "Admin" ?
+                                        <NavLink tag={RRNavLink} to="/chores">
+                                            Chores
+                                        </NavLink>
+                                        :
+                                        ""
+                                    }
+                                </NavItem>
                             </Nav>
                         </Collapse>
                         <Button

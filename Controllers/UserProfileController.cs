@@ -33,7 +33,7 @@ public class UserProfileController : ControllerBase
                 LastName = up.LastName,
                 Address = up.Address,
                 IdentityUserId = up.IdentityUserId,
-                Email = up.IdentityUser.Email,
+                Email = up.Email,
                 UserName = up.IdentityUser.UserName
             })
             .ToList());
@@ -115,7 +115,7 @@ public class UserProfileController : ControllerBase
             FirstName = foundUserProfiles.FirstName,
             LastName = foundUserProfiles.LastName,
             Address = foundUserProfiles.Address,
-            Email = foundUserProfiles.IdentityUser.Email,
+            Email = foundUserProfiles.Email,
             UserChores = foundUserProfiles.UserChores.Select(uc => new UserChoresDTO
             {
                 Id = uc.Id,

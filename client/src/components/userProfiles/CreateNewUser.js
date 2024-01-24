@@ -15,6 +15,7 @@ export const CreateNewUser = () => {
 
     const handleSubmitBtn = (event) => {
         event.preventDefault()
+        console.log("Email entered:", email);
 
         const userCreated = {
             firstName: firstName,
@@ -72,7 +73,7 @@ export const CreateNewUser = () => {
                 <FormGroup>
                     <Label>Email</Label>
                     <Input
-                        type="text"
+                        type="email"
                         value={email}
                         onChange={(event) => {
                             setEmail(event.target.value)
