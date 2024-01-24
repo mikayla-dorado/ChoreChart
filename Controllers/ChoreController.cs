@@ -39,8 +39,25 @@ public class ChoreController : ControllerBase
                ChoreId = uc.ChoreId,
                RoomId = uc.RoomId
            }).ToList()
-       }).ToList();
+       });
 
         return Ok(choresWithUserChores);
     }
+
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult DeleteChore(int id)
+    {
+        Chore choreDelete = _dbContext.chores.FirstOrDefault(c => c.Id == id);
+        if (choreDelete == null)
+        {
+            return NotFound();
+        }
+
+        _dbContext.chores.Remove(choreDelete);
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
 }

@@ -9,4 +9,5 @@ public class ChoreDTO
     public string Status { get; set; }
     // public List<UserChores> UserChores { get; set; }
     public List<UserChoresDTO> UserChores { get; set; }
+    public List<UserProfileDTO> UserProfiles { get; set; }
 }

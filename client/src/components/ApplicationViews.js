@@ -7,7 +7,7 @@ import { Home } from "./Home"
 import { UserProfileDetails } from "./userProfiles/userProfileDetails";
 import { CreateNewUser } from "./userProfiles/CreateNewUser";
 import { ChoreList } from "./chores/ChoreList";
-
+import { ChoreDetails } from "./chores/ChoreDetails";
 
 
 
@@ -23,7 +23,8 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           }
         />
         <Route path="userprofiles">
-          <Route index element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+          <Route index 
+          element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
             <UserProfileList loggedInUser={loggedInUser} />
           </AuthorizedRoute>
           }
@@ -41,9 +42,18 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             }
           />
         </Route>
+
         <Route path="chores">
-          <Route index element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-            <ChoreList />
+
+          <Route index 
+          element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+            <ChoreList loggedInUser={loggedInUser} />
+          </AuthorizedRoute>
+          }
+          />
+          <Route path=":id"
+          element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser} >
+            <ChoreDetails  />
           </AuthorizedRoute>
           }
           />
