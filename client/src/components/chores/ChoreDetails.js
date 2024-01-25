@@ -5,7 +5,7 @@ import { getUserProfiles } from "../../managers/userProfileManager"
 import { Table } from "reactstrap"
 
 export const ChoreDetails = () => {
-    const [chores, setChores] = useState([0])
+    const [chores, setChores] = useState([])
     const [users, setUsers] = useState([])
 
     const { id } = useParams();
@@ -14,6 +14,7 @@ export const ChoreDetails = () => {
     useEffect(() => {
         getChoreById(id).then(array => {
             setChores(array)
+            console.log(chores)
         })
     }, [id])
 
@@ -38,15 +39,17 @@ export const ChoreDetails = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {chores.map((chores) => (
-                        <tr key={chores.id}>
-                            <td scope="row">{`${chores.id}`}</td>
-                            <td>{chores?.name}</td>
-                            <td>{chores?.description}</td>
-                            <td>{chores?.dueDate?.slice(0, 10)}</td>
-                            <td>{chores?.status}</td>
-                            <td>{chores?.userChore?.userProfile?.firstName}</td>
-                            <td>{chores?.userChore?.userProfile?.lastName}</td>
+                    <tr key={chores.id}>
+                        <td scope="row">{`${chores.id}`}</td>
+                        <td>{chores?.name}</td>
+                        <td>{chores?.description}</td>
+                        <td>{chores?.dueDate?.slice(0, 10)}</td>
+                        <td>{chores?.status}</td>
+                    </tr>
+                    {chores.userChore && chores.userChore.map((uc) => (
+                        <tr key={uc.id}>
+                            <td>{uc?.userProfile?.firstName}</td>
+                            <td>{uc?.userProfile?.lastName}</td>
                         </tr>
                     ))}
                 </tbody>

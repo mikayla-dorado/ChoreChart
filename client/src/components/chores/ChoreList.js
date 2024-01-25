@@ -22,11 +22,17 @@ export const ChoreList = ({ loggedInUser }) => {
         deleteChore(id).then(() => getAndSetChores())
     }
 
+    const handleCreateChoreBtn = (event) => {
+        event.preventDefault()
+
+        navigate("create")
+    }
 
 
     return (
         <div>
             <h2>Chores</h2>
+            <Button color="success" onClick={handleCreateChoreBtn}>Create A New Chore</Button>
             <Table>
                 <thead>
                     <tr>
@@ -47,21 +53,21 @@ export const ChoreList = ({ loggedInUser }) => {
                                 {/* <td>{c?.dueDate.slice(0, 10)}</td>
                                 <td>{c?.status}</td> */}
                                 <td>
-                        {loggedInUser.roles.includes("Admin") ? (
-                            <>
-                                <Button
-                                    color="danger"
-                                    onClick={event => handleDeleteBtn(event, c.id)}>
-                                    Delete
-                                </Button>
-                                <Link to={`${c.id}`}>
-                                    Details
-                                </Link>
-                            </>
-                        ) : (
-                            ""
-                        )}
-                    </td>
+                                    {loggedInUser.roles.includes("Admin") ? (
+                                        <>
+                                            <Button
+                                                color="danger"
+                                                onClick={event => handleDeleteBtn(event, c.id)}>
+                                                Delete
+                                            </Button>
+                                            <Link to={`${c.id}`}>
+                                                Details
+                                            </Link>
+                                        </>
+                                    ) : (
+                                        ""
+                                    )}
+                                </td>
                             </tr>
                         )
                     })}

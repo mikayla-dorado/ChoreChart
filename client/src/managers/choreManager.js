@@ -21,3 +21,13 @@ export const deleteChore = (id) => {
       method: "DELETE"
     })
   }
+
+  export const createChore = (choreObj) => {
+    return fetch(_apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(choreObj),
+    }).then (res => res.json())
+  }

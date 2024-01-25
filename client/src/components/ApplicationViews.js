@@ -8,6 +8,7 @@ import { UserProfileDetails } from "./userProfiles/userProfileDetails";
 import { CreateNewUser } from "./userProfiles/CreateNewUser";
 import { ChoreList } from "./chores/ChoreList";
 import { ChoreDetails } from "./chores/ChoreDetails";
+import { CreateChore } from "./chores/CreateChore";
 
 
 
@@ -23,11 +24,11 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           }
         />
         <Route path="userprofiles">
-          <Route index 
-          element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-            <UserProfileList loggedInUser={loggedInUser} />
-          </AuthorizedRoute>
-          }
+          <Route index
+            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <UserProfileList loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+            }
           />
           <Route path=":id"
             element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
@@ -45,17 +46,23 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
 
         <Route path="chores">
 
-          <Route index 
-          element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-            <ChoreList loggedInUser={loggedInUser} />
-          </AuthorizedRoute>
-          }
+          <Route index
+            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <ChoreList loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+            }
           />
           <Route path=":id"
-          element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser} >
-            <ChoreDetails  />
-          </AuthorizedRoute>
-          }
+            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser} >
+              <ChoreDetails />
+            </AuthorizedRoute>
+            }
+          />
+          <Route path="create"
+            element={<AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <CreateChore loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+            }
           />
         </Route>
         <Route
