@@ -33,8 +33,8 @@ export const ChoreList = ({ loggedInUser }) => {
                         <th>Id</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
+                        {/* <th>Due Date</th>
+                        <th>Status</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -44,8 +44,8 @@ export const ChoreList = ({ loggedInUser }) => {
                                 <td scope="row">{`${c.id}`}</td>
                                 <td>{c?.name}</td>
                                 <td>{c?.description}</td>
-                                <td>{c?.dueDate.slice(0, 10)}</td>
-                                <td>{c?.status}</td>
+                                {/* <td>{c?.dueDate.slice(0, 10)}</td>
+                                <td>{c?.status}</td> */}
                                 <td>
                         {loggedInUser.roles.includes("Admin") ? (
                             <>

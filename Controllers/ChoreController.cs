@@ -60,4 +60,46 @@ public class ChoreController : ControllerBase
         return NoContent();
     }
 
+    //get Chores by Id
+    [HttpGet("{id}")]
+    [Authorize]
+    public IActionResult GetById(int id)
+    {
+        Chore chore = _dbContext
+        .chores
+        .Include(c => c.UserChores)
+        .ThenInclude(uc => uc.UserProfile)
+        .ThenInclude(up => up.UserChores)
+        .SingleOrDefault(c => c.Id == id);
+
+        if (chore == null)
+        {
+            return NotFound();
+        }
+        return Ok(chore);
+    }
+
+    // [HttpGet]
+    // [Authorize]
+    // public IActionResult GetUserChores()
+    // {
+    //     return Ok(_dbContext
+    //     .userChores
+    //     .Include(uc => uc.UserProfile)
+    //     .Select(uc => new UserChoresDTO
+    //     {
+    //         Id = uc.Id,
+    //         ChoreId = uc.ChoreId,
+    //         RoomId = uc.RoomId,
+    //         UserProfileId = uc.UserProfileId.Select(up => new UserProfileDTO
+    //         {
+    //             Id = up.Id,
+    //             FirstName = up.FirstName,
+    //             LastName = up.LastName,
+    //             Address = up.Address,
+    //             Email = up.Email
+    //         }).ToList()
+    //     }).ToList());
+    // }
+
 }
