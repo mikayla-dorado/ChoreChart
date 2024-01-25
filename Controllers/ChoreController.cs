@@ -102,4 +102,40 @@ public class ChoreController : ControllerBase
     //     }).ToList());
     // }
 
+
+    //post a chore as an admin
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public IActionResult PostChore(Chore chore)
+    {
+        _dbContext.chores.Add(chore);
+        _dbContext.SaveChanges();
+        return Created($"/chores/{chore.Id}", chore);
+    }
+
+    //allows admin to assign chore to a user
+    // [HttpPost("{id}/assign")]
+    // [Authorize(Roles = "Admin")]
+    // public IActionResult AssignChore(int id, int? userId)
+    // {
+    //     Chore chosenChore = _dbContext.chores.FirstOrDefault(c => c.Id == id);
+    //     UserProfile chosenUser = _dbContext.UserProfiles.FirstOrDefault(u => u.Id == userId);
+
+    //     if (chosenChore == null || chosenUser == null)
+    //     {
+    //         return NotFound();
+    //     }
+
+    //     UserChores userChoreEntry = new UserChores
+    //     {
+    //         ChoreId = chosenChore.Id,
+    //         UserProfileId = chosenUser.Id,
+    //         RoomId = chosenUser.RoomId
+    //     };
+
+    //     _dbContext.userChores.Add(userChoreEntry);
+    //     _dbContext.SaveChanges();
+
+    //     return NoContent();
+    // }
 }
