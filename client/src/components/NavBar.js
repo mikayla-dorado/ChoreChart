@@ -17,6 +17,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
 
     const toggleNavbar = () => setOpen(!open);
 
+
     return (
         <div>
             <Navbar color="light" light fixed="true" expand="lg">
@@ -26,10 +27,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 {loggedInUser ? (
                     <>
                         <NavbarToggler onClick={toggleNavbar} />
+
                         <Collapse isOpen={open} navbar>
                             <Nav navbar>
                                 <NavItem onClick={() => setOpen(false)}>
-                                    {loggedInUser.roles[0] === "Admin" ?
+                                    {loggedInUser && loggedInUser.roles.includes("Admin") ?
                                         <NavLink tag={RRNavLink} to="/userprofiles">
                                             Users
                                         </NavLink>

@@ -295,7 +295,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "d565f510-acb3-4364-9714-a1901c1f7d85",
+                            ConcurrencyStamp = "540d4823-1deb-4357-8389-c5ee63b21ff7",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -394,13 +394,13 @@ namespace ChoreChart.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5df7f38d-78d2-42ec-8c38-d363afdaf659",
+                            ConcurrencyStamp = "594c81a2-6e8d-48d4-b11f-fbf94ab24324",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEC9g6xSt+Mx7axWr7g5Jm8dX0e0MNXPUqSQ255+V2RYUJMTbtvDRauWyulij4jJ6Kg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKMSwXGia7Xm8SwBpEE7haheLVpRWPSAQg70eLmmaGEU1wJGeVEcNwLXVF3WMhWprw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "73caa0da-9aeb-45a4-b8b5-17aeadb81d79",
+                            SecurityStamp = "bd1be9c7-b412-486c-b2a7-06c54c4e3d51",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
