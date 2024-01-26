@@ -10,6 +10,6 @@ public class Chore
     public DateTime DueDate { get; set; }
     public string Status { get; set; }
     //public UserChores UserChores { get; set; }
-    public List<UserChores> UserChores { get; set; }
+    public List<UserChores>? UserChores { get; set; }
     //public List<UserProfile> UserProfiles { get; set; }
 }
