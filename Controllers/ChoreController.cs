@@ -79,53 +79,14 @@ public class ChoreController : ControllerBase
         return Ok(chore);
     }
 
-    // [HttpGet]
-    // [Authorize]
-    // public IActionResult GetUserChores()
-    // {
-    //     return Ok(_dbContext
-    //     .userChores
-    //     .Include(uc => uc.UserProfile)
-    //     .Select(uc => new UserChoresDTO
-    //     {
-    //         Id = uc.Id,
-    //         ChoreId = uc.ChoreId,
-    //         RoomId = uc.RoomId,
-    //         UserProfileId = uc.UserProfileId.Select(up => new UserProfileDTO
-    //         {
-    //             Id = up.Id,
-    //             FirstName = up.FirstName,
-    //             LastName = up.LastName,
-    //             Address = up.Address,
-    //             Email = up.Email
-    //         }).ToList()
-    //     }).ToList());
-    // }
-
-
     //post a chore as an admin
-    [HttpPost]
+    [HttpPost("{userProfileId}/{roomId}")]
     //[Authorize(Roles = "Admin")]
-    public IActionResult PostChore(Chore chore, int userProfileId)
+    public IActionResult PostChore(Chore chore, int userProfileId, int roomId)
     {
         _dbContext.chores.Add(chore);
         _dbContext.SaveChanges();
 
-
-        // var userChore = new UserChores
-        // {
-        //     ChoreId = chore.Id,
-        //     RoomId = chore.RoomId,
-        //     UserProfileId = userProfileId,
-        // };
-
-        // _dbContext.userChores.Add(userChore);
-        // _dbContext.SaveChanges();
-
-
-        // return Created($"/chores/{chore.Id}", chore);
-        var room = _dbContext.rooms.FirstOrDefault();
-        int roomId = room != null ? room.Id : 0; // Set RoomId based on logic or default to 0
 
         var userChore = new UserChores
         {
@@ -140,5 +101,24 @@ public class ChoreController : ControllerBase
         return Created($"/chores/{chore.Id}", chore);
     }
 
-    
+    //edit a chore as an admin
+    [HttpPut("{id}")]
+    [Authorize(Roles ="Admin")]
+    public IActionResult UpdateChore(int id, Chore chore)
+    {
+        Chore choreUpdate = _dbContext.chores.FirstOrDefault(c => c.Id == id);
+        if (choreUpdate == null)
+        {
+            return NotFound();
+        }
+
+        choreUpdate.Name = chore.Name;
+        choreUpdate.Description = chore.Description;
+        choreUpdate.DueDate = chore.DueDate;
+        choreUpdate.Status = chore.Status;
+
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
 }

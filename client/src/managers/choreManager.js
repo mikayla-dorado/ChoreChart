@@ -29,5 +29,5 @@ export const deleteChore = (id) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(choreObj),
-    }).then (res => res.json())
+    })
   }
