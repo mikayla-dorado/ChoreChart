@@ -14,6 +14,6 @@ public class UserProfile
     public string Address { get; set; }
     public string Email { get; set; }
     public string IdentityUserId { get; set; }
-    public IdentityUser IdentityUser { get; set; }
-    public List<UserChores> UserChores {get; set; }
+    public IdentityUser? IdentityUser { get; set; }
+    public List<UserChores>? UserChores {get; set; }
 }
