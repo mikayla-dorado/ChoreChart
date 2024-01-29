@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { getChoreById } from "../../managers/choreManager"
+import { getChoreById, updateChore } from "../../managers/choreManager"
 import { getUserProfiles } from "../../managers/userProfileManager"
 import { getRoomsById } from "../../managers/roomManager"
 import { Table } from "reactstrap"
@@ -30,6 +30,7 @@ export const ChoreDetails = () => {
         })
     }, [id])
 
+    
     return (
         <div>
             <h2>Chore Details</h2>
@@ -45,33 +46,6 @@ export const ChoreDetails = () => {
                         <th>Assigned User</th>
                     </tr>
                 </thead>
-                {/* <tbody>
-                    <tr key={chores.id}>
-                        <td scope="row">{`${chores.id}`}</td>
-                        <td>{chores?.name}</td>
-                        <td>{chores?.description}</td>
-                        <td>{chores?.dueDate?.slice(0, 10)}</td>
-                        <td>{chores?.status}</td>
-                    </tr>
-                    <td>
-                        {chores.userChores &&
-                            chores.userChores.map((uc) => (
-                                <div key={uc.id}>
-                                    {uc.roomId && <span>{uc.room?.name} {uc.room?.location}</span>}
-                                </div>
-                            ))}
-                    </td>
-                    <td>
-                        {chores.userChores &&
-                            chores.userChores.map((uc) => (
-                                <div key={uc.id}>
-                                    {uc.userProfile &&
-                                        `${uc.userProfile.firstName} ${uc.userProfile.lastName}`}
-                                </div>
-                            ))}
-                    </td>
-                </tbody> */}
-
                 <tbody>
                     <tr key={chores.id}>
                         <td scope="row">{`${chores.id}`}</td>
@@ -79,21 +53,13 @@ export const ChoreDetails = () => {
                         <td>{chores?.description}</td>
                         <td>{chores?.dueDate?.slice(0, 10)}</td>
                         <td>{chores?.status}</td>
-                        {/* <td>
-                            {chores.userChores &&
-                                chores.userChores.map((uc) => (
-                                    <div key={uc.id}>
-                                        {uc.roomId && <span>{uc.room?.name} - {uc.room?.location}</span>}
-                                    </div>
-                                ))}
-                        </td> */}
                         <td>
                             {chores.userChores &&
                                 chores.userChores.map((uc) => (
                                     <div key={uc.id}>
-                                        {uc.roomId && uc.room ? (
+                                        {uc.roomId ? (
                                             <span>
-                                                {uc.room.name} - {uc.room.location}
+                                                {uc.room?.name} - {uc.room?.location}
                                             </span>
                                         ) : (
                                             <span>Not Assigned</span>

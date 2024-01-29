@@ -26,6 +26,11 @@ export const UserProfileList = ({ loggedInUser }) => {
         navigate("create")
     }
 
+    const handleUpdateBtn = (event, id) => {
+        event.preventDefault()
+        navigate("edit")
+    }
+
     return (
         <div>
             <h2>Users</h2>
@@ -56,6 +61,11 @@ export const UserProfileList = ({ loggedInUser }) => {
                                             color="danger"
                                             onClick={event => handleDeleteBtn(event, p.id)}>
                                             Delete
+                                        </Button>
+                                        <Button
+                                            color="success"
+                                            onClick={event => handleUpdateBtn(event, p.id)}>
+                                            Edit
                                         </Button>
                                     </>
                                 ) : (

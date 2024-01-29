@@ -65,11 +65,13 @@ public class ChoreController : ControllerBase
     [Authorize]
     public IActionResult GetById(int id)
     {
-        Chore chore = _dbContext
+        Chore? chore = _dbContext
         .chores
         .Include(c => c.UserChores)
-        .ThenInclude(uc => uc.UserProfile)
-        .ThenInclude(up => up.UserChores)
+            .ThenInclude(uc => uc.UserProfile)
+                .ThenInclude(up => up.UserChores)
+          .Include(c => c.UserChores)
+          .ThenInclude(uc => uc.Room)      
         .SingleOrDefault(c => c.Id == id);
 
         if (chore == null)
@@ -120,5 +122,4 @@ public class ChoreController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
-
 }
