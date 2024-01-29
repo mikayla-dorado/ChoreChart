@@ -43,7 +43,7 @@ export const UserProfileDetails = () => {
                         <th>Address</th>
                         <th>Email</th>
                         <th>Chores</th>
-                        <th>Status</th>
+                        <th>Chore Status</th>
                     </tr>
                 </thead>
                 <tbody>

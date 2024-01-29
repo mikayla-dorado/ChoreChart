@@ -28,6 +28,12 @@ export const ChoreList = ({ loggedInUser }) => {
         navigate("create")
     }
 
+    const handleEditBtn = (event, id) => {
+        event.preventDefault()
+
+        navigate("edit")
+    }
+
 
     return (
         <div>
@@ -55,6 +61,11 @@ export const ChoreList = ({ loggedInUser }) => {
                                 <td>
                                     {loggedInUser.roles.includes("Admin") ? (
                                         <>
+                                         <Button
+                                                color="success"
+                                                onClick={event => handleEditBtn(event, c.id)}>
+                                                Edit
+                                            </Button>
                                             <Button
                                                 color="danger"
                                                 onClick={event => handleDeleteBtn(event, c.id)}>

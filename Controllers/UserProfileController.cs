@@ -115,7 +115,7 @@ public class UserProfileController : ControllerBase
             FirstName = foundUserProfiles.FirstName,
             LastName = foundUserProfiles.LastName,
             Address = foundUserProfiles.Address,
-            Email = foundUserProfiles.IdentityUser.Email,
+            Email = foundUserProfiles.Email,
             UserChores = foundUserProfiles.UserChores.Select(uc => new UserChoresDTO
             {
                 Id = uc.Id,
@@ -159,5 +159,24 @@ public class UserProfileController : ControllerBase
         _dbContext.UserProfiles.Add(userProfile);
         _dbContext.SaveChanges();
         return Created($"/userprofiles/{userProfile.Id}", userProfile);
+    }
+
+    //edit user
+    [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
+    public IActionResult UpdateUserProfile(int id, UserProfile userProfile)
+    {
+        UserProfile userProfileUpdate = _dbContext.UserProfiles.FirstOrDefault(up => up.Id == id);
+        if (userProfileUpdate == null)
+        {
+            return NotFound();
+        }
+        userProfileUpdate.FirstName = userProfile.FirstName;
+        userProfileUpdate.LastName = userProfile.LastName;
+        userProfileUpdate.Email = userProfile.Email;
+        userProfileUpdate.Address = userProfile.Address;
+
+        _dbContext.SaveChanges();
+        return NoContent();
     }
 }

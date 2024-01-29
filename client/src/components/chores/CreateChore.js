@@ -89,6 +89,7 @@ export const CreateChore = () => {
             <div>
                 <label>Status:</label>
                 <select onChange={(event) => setStatus(event.target.value)}>
+                    <option value="Status">Choose Status</option>
                     <option value="Pending">Pending</option>
                     <option value="InProgress">In Progress</option>
                     <option value="Completed">Completed</option>

@@ -31,3 +31,13 @@ export const deleteChore = (id) => {
       body: JSON.stringify(choreObj),
     })
   }
+
+  export const updateChore = (chore) => {
+    return fetch(`${_apiUrl}/${chore.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(chore)
+    })
+  }
