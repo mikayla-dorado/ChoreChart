@@ -75,7 +75,7 @@ public class ChoreChartDbContext : IdentityDbContext<IdentityUser>
             new UserChores {Id = 2, UserProfileId = 1, ChoreId = 7, RoomId = 4},
             new UserChores {Id = 3, UserProfileId = 1, ChoreId = 6, RoomId = 3},
             new UserChores {Id = 4, UserProfileId = 1, ChoreId = 2, RoomId = 1},
-            new UserChores {Id = 5, UserProfileId = 1, ChoreId = 4, RoomId = 1}
+            new UserChores {Id = 5, UserProfileId = 1, ChoreId = 4, RoomId = 1},
         });
     }
 }

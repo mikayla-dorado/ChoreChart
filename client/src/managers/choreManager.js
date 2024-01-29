@@ -22,8 +22,8 @@ export const deleteChore = (id) => {
     })
   }
 
-  export const createChore = (choreObj) => {
-    return fetch(_apiUrl, {
+  export const createChore = (choreObj, userProfileId, roomId) => {
+    return fetch(`${_apiUrl}/${userProfileId}/${roomId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -18,7 +18,7 @@ public class RoomController : ControllerBase
     }
 
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public IActionResult Get()
     {
         return Ok(_dbContext
@@ -30,5 +30,22 @@ public class RoomController : ControllerBase
             Location = r.Location
         })
         );
+    }
+
+    //get rooms by Id
+    [HttpGet("{id}")]
+    //[Authorize]
+    public IActionResult GetRoomById(int id)
+    {
+        Room room = _dbContext
+        .rooms
+        .SingleOrDefault(r => r.Id == id);
+
+        if (room == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(room);
     }
 }
