@@ -39,15 +39,16 @@ export const CreateChore = () => {
             description: description,
             dueDate: dueDate,
             status: status,
-            userChores: [
-                {
-                    userProfileId: selectedUserProfile.id,
-                    roomId: selectedRoom.id
-                }
-            ]
+            // userChores: [
+            //     {
+            //         userProfileId: selectedUserProfile.id,
+            //         roomId: selectedRoom.id
+            //     }
+            //]
         }
 
-        createChore(choreCreated).then((res) => {
+
+        createChore(choreCreated, selectedUserProfile.id, selectedRoom.id).then((res) => {
             if (res.errors) {
                 setErrors(res.errors)
             } else {
@@ -87,26 +88,15 @@ export const CreateChore = () => {
             {/* If status is fixed, you can display it without an input */}
             <div>
                 <label>Status:</label>
-                <span> Pending</span>
+                <select onChange={(event) => setStatus(event.target.value)}>
+                    <option value="Pending">Pending</option>
+                    <option value="InProgress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
             </div>
             <div>
                 <h2>Assign Chore to a User</h2>
-                {/* </div>
-            <label>User: </label>
-            <Input
-                type="checkbox"
-                value={userProfiles}
-                onChange={(event) => setUserProfiles(event.target.value)}
-            />
-            <div>
-                <div>
-                    <label>Room: </label>
-                    <Input
-                        type="checkbox"
-                        value={rooms}
-                        onChange={(event) => setRooms(event.target.value)}
-                    />
-                </div> */}
+
                 <div>
                     <label>User:</label>
                     <select onChange={(event) => setSelectedUserProfile(userProfiles.find(user => user.id === parseInt(event.target.value)))}>
