@@ -12,6 +12,7 @@ export const EditChore = () => {
     const [rooms, setRooms] = useState([])
     const [selectedUserProfile, setSelectedUserProfile] = useState(null)  // State for selected user
     const [selectedRoom, setSelectedRoom] = useState(null)
+    const [errors, setErrors] = useState([])
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -26,6 +27,11 @@ export const EditChore = () => {
     const handleUpdateBtn = (event) => {
         event.preventDefault()
 
+        if (!selectedUserProfile || !selectedRoom) {
+            setErrors(["Please select a user and a room for the chore."])
+            return;
+        }
+
         const choreUpdate = {
             id: chore?.id,
             name: chore?.name,
@@ -34,12 +40,21 @@ export const EditChore = () => {
             status: chore?.status,
             userChores: [
                 {
-                    userProfileId: selectedUserProfile.id,
-                    roomId: selectedRoom.id
+                    userProfileId: selectedUserProfile?.id,
+                    roomId: selectedRoom?.id
                 }
             ]
         }
-        updateChore(choreUpdate, selectedUserProfile.id, selectedRoom.id).then(() => navigate("/chores"))
+        console.log("Chore Update Data:", choreUpdate);
+        updateChore(choreUpdate, selectedUserProfile.id, selectedRoom.id).then((res) => {
+            console.log("Update Chore Response:", res);
+            if (res.errors) {
+                setErrors(res.errors)
+            } else {
+                navigate("/chores")
+            }
+        })
+
     }
 
     return (

@@ -26,7 +26,6 @@ export const ChoreDetails = () => {
     useEffect(() => {
         getRoomsById(id).then(array => {
             setRooms(array)
-            console.log(array)
         })
     }, [id])
 
