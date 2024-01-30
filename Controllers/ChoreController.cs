@@ -62,7 +62,7 @@ public class ChoreController : ControllerBase
 
     //get Chores by Id
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetById(int id)
     {
         Chore? chore = _dbContext
