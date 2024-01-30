@@ -62,7 +62,7 @@ public class ChoreController : ControllerBase
 
     //get Chores by Id
     [HttpGet("{id}")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetById(int id)
     {
         Chore? chore = _dbContext
@@ -71,7 +71,7 @@ public class ChoreController : ControllerBase
             .ThenInclude(uc => uc.UserProfile)
                 .ThenInclude(up => up.UserChores)
           .Include(c => c.UserChores)
-          .ThenInclude(uc => uc.Room)      
+          .ThenInclude(uc => uc.Room)
         .SingleOrDefault(c => c.Id == id);
 
         if (chore == null)
@@ -104,11 +104,16 @@ public class ChoreController : ControllerBase
     }
 
     //edit a chore as an admin
-    [HttpPut("{id}")]
-    [Authorize(Roles ="Admin")]
-    public IActionResult UpdateChore(int id, Chore chore)
+    [HttpPut("{id}/{userProfileId}/{roomId}")]
+    //[Authorize(Roles ="Admin")]
+    public IActionResult UpdateChore(int id, Chore chore, int userProfileId, int roomId)
     {
-        Chore? choreUpdate = _dbContext.chores.FirstOrDefault(c => c.Id == id);
+        Chore? choreUpdate = _dbContext.chores
+        .Include(c => c.UserChores)
+        .ThenInclude(uc => uc.UserProfile) // Include UserProfile
+        .Include(c => c.UserChores)
+        .ThenInclude(uc => uc.Room) // Include Room
+        .FirstOrDefault(c => c.Id == id);
         if (choreUpdate == null)
         {
             return NotFound();
@@ -118,8 +123,10 @@ public class ChoreController : ControllerBase
         choreUpdate.Description = chore.Description;
         choreUpdate.DueDate = chore.DueDate;
         choreUpdate.Status = chore.Status;
+        choreUpdate.UserChores = chore.UserChores;
 
         _dbContext.SaveChanges();
         return NoContent();
     }
 }
+

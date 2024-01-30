@@ -2,30 +2,59 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getChoreById, updateChore } from "../../managers/choreManager"
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import { getUserProfiles } from "../../managers/userProfileManager";
+import { getRooms } from "../../managers/roomManager";
 
 
 export const EditChore = () => {
     const [chore, setChore] = useState({})
+    const [userProfiles, setUserProfiles] = useState([])
+    const [rooms, setRooms] = useState([])
+    const [selectedUserProfile, setSelectedUserProfile] = useState(null)  // State for selected user
+    const [selectedRoom, setSelectedRoom] = useState(null)
+    const [errors, setErrors] = useState([])
 
     const { id } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
         getChoreById(id).then(array => setChore(array))
+        getUserProfiles().then(array => setUserProfiles(array))
+        getRooms().then(array => setRooms(array))
     }, [id])
 
 
     const handleUpdateBtn = (event) => {
         event.preventDefault()
 
+        if (!selectedUserProfile || !selectedRoom) {
+            setErrors(["Please select a user and a room for the chore."])
+            return;
+        }
+
         const choreUpdate = {
             id: chore?.id,
             name: chore?.name,
             description: chore?.description,
             dueDate: chore?.dueDate,
-            status: chore?.status
+            status: chore?.status,
+            userChores: [
+                {
+                    userProfileId: selectedUserProfile?.id,
+                    roomId: selectedRoom?.id
+                }
+            ]
         }
-        updateChore(choreUpdate).then(() => navigate("/chores"))
+        console.log("Chore Update Data:", choreUpdate);
+        updateChore(choreUpdate, selectedUserProfile.id, selectedRoom.id).then((res) => {
+            console.log("Update Chore Response:", res);
+            if (res.errors) {
+                setErrors(res.errors)
+            } else {
+                navigate("/chores")
+            }
+        })
+
     }
 
     return (
@@ -92,11 +121,28 @@ export const EditChore = () => {
                         <option value="Completed">Completed</option>
                     </select>
                 </FormGroup>
+                <FormGroup>
+                    <Label>User:</Label>
+                    <select onChange={(event) => setSelectedUserProfile(userProfiles.find(user => user.id === parseInt(event.target.value)))}>
+                        <option value="">Select User</option>
+                        {userProfiles.map(user => (
+                            <option key={user.id} value={user.id}>{user.firstName} {user.lastName}</option>
+                        ))}
+                    </select>
+                </FormGroup>
+                <FormGroup>
+                    <Label>Room:</Label>
+                    <select onChange={(event) => setSelectedRoom(rooms.find(room => room.id === parseInt(event.target.value)))}>
+                        <option value="">Select Room</option>
+                        {rooms.map(room => (
+                            <option key={room.id} value={room.id}>{room?.name}</option>
+                        ))}
+                    </select>
+                </FormGroup>
             </Form>
             <div className="submit-btn-container">
                 <Button type="submit" color="success" onClick={e => handleUpdateBtn(e)}>Submit Edit</Button>
             </div>
         </>
     )
-
 }
