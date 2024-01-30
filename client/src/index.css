@@ -5,9 +5,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+height: 100vh;
+background-color: black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.chores-container{
+  background-color:rgba(30, 90, 30, 0.753);
+  /* background-image: url'../images/Chore Chart.jpg'; */
+  /* background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  width: 200px;
+  height: 200px;
+  
+  border-radius: 50%;  */
 }

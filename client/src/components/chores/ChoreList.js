@@ -42,7 +42,7 @@ export const ChoreList = ({ loggedInUser }) => {
             <Table>
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        {/* <th>Id</th> */}
                         <th>Name</th>
                         <th>Description</th>
                         {/* <th>Due Date</th>
@@ -53,7 +53,7 @@ export const ChoreList = ({ loggedInUser }) => {
                     {chores.map((c) => {
                         return (
                             <tr key={c.id}>
-                                <td scope="row">{`${c.id}`}</td>
+                                {/* <td scope="row">{`${c.id}`}</td> */}
                                 <td>{c?.name}</td>
                                 <td>{c?.description}</td>
                                 {/* <td>{c?.dueDate.slice(0, 10)}</td>
