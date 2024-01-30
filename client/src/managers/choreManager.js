@@ -32,8 +32,8 @@ export const deleteChore = (id) => {
     })
   }
 
-  export const updateChore = (chore) => {
-    return fetch(`${_apiUrl}/${chore.id}`, {
+  export const updateChore = (chore, userProfileId, roomId) => {
+    return fetch(`${_apiUrl}/${chore.id}/${userProfileId}/${roomId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
