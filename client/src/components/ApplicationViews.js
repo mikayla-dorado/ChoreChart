@@ -44,7 +44,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
             }
           />
-          <Route path="edit"
+          <Route path=":id/edit"
           element={<AuthorizedRoute loggedInUser={loggedInUser}>
             <EditUserProfile loggedInUser={loggedInUser}/>
           </AuthorizedRoute>
@@ -72,7 +72,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
             }
           />
-          <Route path="edit"
+          <Route path=":id/edit"
           element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
             <EditChore loggedInUser={loggedInUser}/>
           </AuthorizedRoute>

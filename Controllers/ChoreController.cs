@@ -83,7 +83,7 @@ public class ChoreController : ControllerBase
 
     //post a chore as an admin
     [HttpPost("{userProfileId}/{roomId}")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult PostChore(Chore chore, int userProfileId, int roomId)
     {
         _dbContext.chores.Add(chore);
@@ -108,7 +108,7 @@ public class ChoreController : ControllerBase
     [Authorize(Roles ="Admin")]
     public IActionResult UpdateChore(int id, Chore chore)
     {
-        Chore choreUpdate = _dbContext.chores.FirstOrDefault(c => c.Id == id);
+        Chore? choreUpdate = _dbContext.chores.FirstOrDefault(c => c.Id == id);
         if (choreUpdate == null)
         {
             return NotFound();
