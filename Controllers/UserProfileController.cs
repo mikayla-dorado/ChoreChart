@@ -93,7 +93,7 @@ public class UserProfileController : ControllerBase
         return NoContent();
     }
 
-//get user profiles by id
+    //get user profiles by id
     [HttpGet("{id}")]
     [Authorize]
     public IActionResult GetUserProfilesById(int id)
@@ -109,7 +109,7 @@ public class UserProfileController : ControllerBase
         {
             return NotFound();
         }
-          return Ok(new UserProfileDTO
+        return Ok(new UserProfileDTO
         {
             Id = foundUserProfiles.Id,
             FirstName = foundUserProfiles.FirstName,
@@ -134,7 +134,7 @@ public class UserProfileController : ControllerBase
     }
 
 
-//an admin can delete a user
+    //an admin can delete a user
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
     public IActionResult DeleteUserProfile(int id)
@@ -163,10 +163,10 @@ public class UserProfileController : ControllerBase
 
     //edit user
     [HttpPut("{id}")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public IActionResult UpdateUserProfile(int id, UserProfile userProfile)
     {
-        UserProfile userProfileUpdate = _dbContext.UserProfiles.FirstOrDefault(up => up.Id == id);
+        UserProfile? userProfileUpdate = _dbContext.UserProfiles.FirstOrDefault(up => up.Id == id);
         if (userProfileUpdate == null)
         {
             return NotFound();

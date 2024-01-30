@@ -5,14 +5,13 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 
 export const EditChore = () => {
-    const [chores, setChores] = useState()
+    const [chore, setChore] = useState({})
 
     const { id } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
-        getChoreById(id).then(array => setChores(array))
-        console.log(chores)
+        getChoreById(id).then(array => setChore(array))
     }, [id])
 
 
@@ -20,11 +19,11 @@ export const EditChore = () => {
         event.preventDefault()
 
         const choreUpdate = {
-            id: chores?.id,
-            name: chores?.name,
-            description: chores?.description,
-            dueDate: chores?.dueDate,
-            status: chores?.status
+            id: chore?.id,
+            name: chore?.name,
+            description: chore?.description,
+            dueDate: chore?.dueDate,
+            status: chore?.status
         }
         updateChore(choreUpdate).then(() => navigate("/chores"))
     }
@@ -38,9 +37,9 @@ export const EditChore = () => {
                     <Input
                         type="text"
                         name="name"
-                        value={chores?.name}
+                        value={chore?.name}
                         onChange={(event) => {
-                            setChores(prevChore => ({
+                            setChore(prevChore => ({
                                 ...prevChore,
                                 [event.target.name]: event.target.value
                             }))
@@ -50,49 +49,53 @@ export const EditChore = () => {
                 <FormGroup>
                     <Label>Desciption:</Label>
                     <Input
-                    type="text"
-                    name="description"
-                    value={chores?.description}
-                    onChange={(event) => {
-                        setChores(prevChore => ({
-                            ...prevChore,
-                            [event.target.name]: event.target.value
-                        }))
-                    }}
+                        type="text"
+                        name="description"
+                        value={chore?.description}
+                        onChange={(event) => {
+                            setChore(prevChore => ({
+                                ...prevChore,
+                                [event.target.name]: event.target.value
+                            }))
+                        }}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Due Date:</Label>
                     <Input
-                    type="datetime-local"
-                    name="dueDate"
-                    value={chores?.dueDate}
-                    onChange={(event) => {
-                        setChores(prevChore => ({
-                            ...prevChore,
-                            [event.target.name]: event.target.value
-                        }))
-                    }}
+                        type="datetime-local"
+                        name="dueDate"
+                        value={chore?.dueDate}
+                        onChange={(event) => {
+                            setChore(prevChore => ({
+                                ...prevChore,
+                                [event.target.name]: event.target.value
+                            }))
+                        }}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Status:</Label>
-                    <Input
-                    type="text"
-                    name="status"
-                    value={chores?.status}
-                    onChange={(event) => {
-                        setChores(prevChore => ({
-                            ...prevChore,
-                            [event.target.name]: event.target.value
-                        }))
-                    }}
-                    />
+                    <select
+                        name="status"
+                        value={chore?.status}
+                        onChange={(event) => {
+                            setChore((prevChore) => ({
+                                ...prevChore,
+                                [event.target.name]: event.target.value,
+                            }));
+                        }}
+                    >
+                        <option value="Edit status">Edit Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
                 </FormGroup>
             </Form>
             <div className="submit-btn-container">
-        <Button type="submit" color="success" onClick={e => handleUpdateBtn(e)}>Submit Edit</Button>
-      </div>
+                <Button type="submit" color="success" onClick={e => handleUpdateBtn(e)}>Submit Edit</Button>
+            </div>
         </>
     )
 

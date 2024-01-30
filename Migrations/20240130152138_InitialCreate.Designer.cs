@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChoreChart.Migrations
 {
     [DbContext(typeof(ChoreChartDbContext))]
-    [Migration("20240126200805_InitialCreate")]
+    [Migration("20240130152138_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -297,7 +297,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "540d4823-1deb-4357-8389-c5ee63b21ff7",
+                            ConcurrencyStamp = "cdf8aff2-ecd6-490a-92c7-98dec21771ef",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -396,13 +396,13 @@ namespace ChoreChart.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "594c81a2-6e8d-48d4-b11f-fbf94ab24324",
+                            ConcurrencyStamp = "4be8bfdc-5521-43bf-80d7-977f6158d0cb",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEKMSwXGia7Xm8SwBpEE7haheLVpRWPSAQg70eLmmaGEU1wJGeVEcNwLXVF3WMhWprw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBkAcKvDwzDV+jzPTeUAm0vQ7qjLvlF6Ty0TINYcFr0tPnkeKUzwyTRhA5MbDVSdhQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bd1be9c7-b412-486c-b2a7-06c54c4e3d51",
+                            SecurityStamp = "cf67abc9-9c5c-4421-a0d3-2e56667bed5a",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

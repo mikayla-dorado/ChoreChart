@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { deleteUser, getUserProfiles } from "../../managers/userProfileManager"
+import { deleteUser, getUserProfileById, getUserProfiles } from "../../managers/userProfileManager"
 import { Table, Button } from "reactstrap"
 import { Link, useNavigate } from "react-router-dom"
 
@@ -28,7 +28,7 @@ export const UserProfileList = ({ loggedInUser }) => {
 
     const handleUpdateBtn = (event, id) => {
         event.preventDefault()
-        navigate("edit")
+        navigate(`${id}/edit`)
     }
 
     return (

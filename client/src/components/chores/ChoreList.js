@@ -31,7 +31,7 @@ export const ChoreList = ({ loggedInUser }) => {
     const handleEditBtn = (event, id) => {
         event.preventDefault()
 
-        navigate("edit")
+        navigate(`${id}/edit`)
     }
 
 

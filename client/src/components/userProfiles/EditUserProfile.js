@@ -5,7 +5,7 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 
 export const EditUserProfile = () => {
-    const [UserProfile, setUserProfile] = useState([])
+    const [UserProfile, setUserProfile] = useState({})
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ export const EditUserProfile = () => {
         console.log(UserProfile)
     }, [id])
 
-    const handleUpdateBtn = (event, id) => {
+    const handleUpdateBtn = (event) => {
         event.preventDefault()
 
         const userUpdate = {
@@ -36,7 +36,7 @@ export const EditUserProfile = () => {
                     <Label>First Name:</Label>
                     <Input
                         type="text"
-                        name="first name"
+                        name="firstName"
                         value={UserProfile?.firstName} 
                         onChange={(event) => {
                             setUserProfile(prevUserProfile => ({
@@ -50,7 +50,7 @@ export const EditUserProfile = () => {
                     <Label>Last Name:</Label>
                     <Input
                     type="text"
-                    name="last name"
+                    name="lastName"
                     value={UserProfile?.lastName}
                     onChange={(event) => {
                         setUserProfile(prevUserProfile => ({
