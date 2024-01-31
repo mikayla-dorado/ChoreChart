@@ -11,7 +11,7 @@ import { ChoreDetails } from "./chores/ChoreDetails";
 import { CreateChore } from "./chores/CreateChore";
 import { EditChore } from "./chores/EditChore";
 import { EditUserProfile } from "./userProfiles/EditUserProfile";
-
+import { CreateComments } from "./chores/CreateComments";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -26,14 +26,15 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           }
         />
         <Route path="userprofiles">
+
           <Route index
-            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+            element={<AuthorizedRoute loggedInUser={loggedInUser}>
               <UserProfileList loggedInUser={loggedInUser} />
             </AuthorizedRoute>
             }
           />
           <Route path=":id"
-            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+            element={<AuthorizedRoute loggedInUser={loggedInUser}>
               <UserProfileDetails />
             </AuthorizedRoute>
             }
@@ -45,38 +46,44 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             }
           />
           <Route path=":id/edit"
-          element={<AuthorizedRoute loggedInUser={loggedInUser}>
-            <EditUserProfile loggedInUser={loggedInUser}/>
-          </AuthorizedRoute>
-          }
+            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <EditUserProfile loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+            }
           />
         </Route>
 
         <Route path="chores">
 
           <Route index
-            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+            element={<AuthorizedRoute loggedInUser={loggedInUser}>
               <ChoreList loggedInUser={loggedInUser} />
             </AuthorizedRoute>
             }
           />
           <Route path=":id"
-            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser} >
+            element={<AuthorizedRoute loggedInUser={loggedInUser} >
               <ChoreDetails />
             </AuthorizedRoute>
             }
           />
           <Route path="create"
-            element={<AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
               <CreateChore loggedInUser={loggedInUser} />
             </AuthorizedRoute>
             }
           />
           <Route path=":id/edit"
-          element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
-            <EditChore loggedInUser={loggedInUser}/>
-          </AuthorizedRoute>
-          }
+            element={<AuthorizedRoute roles={["Admin"]} loggedInUser={loggedInUser}>
+              <EditChore loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+            }
+          />
+          <Route path="comment"
+            element={<AuthorizedRoute loggedInUser={loggedInUser}>
+              <CreateComments loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+            }
           />
         </Route>
         <Route
