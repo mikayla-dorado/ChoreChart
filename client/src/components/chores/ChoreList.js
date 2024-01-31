@@ -31,12 +31,19 @@ export const ChoreList = ({ loggedInUser }) => {
         navigate(`${id}/edit`);
     };
 
+    const handleCommentBtn = (event) => {
+        event.preventDefault()
+        navigate("comment")
+    }
+
     return (
         <div className="chore-list">
             <h2 className="chores">Chores</h2>
-            <Button color="success" onClick={handleCreateChoreBtn}>
-                Create A New Chore
-            </Button>
+            {loggedInUser.roles.includes("Admin") && (
+                <Button color="success" onClick={handleCreateChoreBtn}>
+                    Create A New Chore
+                </Button>
+            )}
             <Row xs="1" sm="2" md="3" lg="4">
                 {chores.map((c) => (
                     <Col key={c.id} className="mb-4">
@@ -65,7 +72,7 @@ export const ChoreList = ({ loggedInUser }) => {
                                         </Button>
                                         <Button
                                             color="secondary"
-                                            onClick={(event) => handleEditBtn(event, c.id)}
+                                            onClick={(event) => handleCommentBtn(event)}
                                             className="mb-2"
                                         >
                                             Comments

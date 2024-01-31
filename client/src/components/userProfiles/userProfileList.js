@@ -34,9 +34,11 @@ export const UserProfileList = ({ loggedInUser }) => {
     return (
         <div className="user-list">
             <h2 className="users">Users</h2>
-            <Button onClick={handleCreateUserBtn} className="mt-3">
-                Add User
-            </Button>
+            {loggedInUser.roles.includes("Admin") && (
+                <Button color="success" onClick={handleCreateUserBtn}>
+                    Add User
+                </Button>
+            )}
             <Row xs="1" sm="2" md="3" lg="4">
                 {userProfiles.map((p) => (
                     <Col key={p.id} className="mb-4">
