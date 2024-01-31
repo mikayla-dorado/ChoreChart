@@ -1,0 +1,17 @@
+.chore-list {
+    background-color: rgba(30, 90, 30, 0.753);
+    min-height: 100vh;
+}
+
+.detail-table th {
+    background-color: rgba(243, 228, 228, 0.863);
+}
+
+.detail-table td{
+    background-color: rgba(243, 228, 228, 0.863);
+}
+
+.chores {
+    text-align: center;
+}
+

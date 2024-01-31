@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getUserProfileById } from "../../managers/userProfileManager"
 import { Table, FormGroup, Label, Input } from "reactstrap"
+import "./User.css"
 
 export const UserProfileDetails = () => {
     const [userProfile, setUserProfile] = useState({})
@@ -16,29 +17,12 @@ export const UserProfileDetails = () => {
     }, [id])
 
 
-    // const handleStatusChange = (choreId, newStatus) => {
-
-    //     const updatedUserChores = userProfile.userChores.map((chores) => {
-    //       if (chores.id === choreId) {
-    //         return { ...chores, status: newStatus };
-    //       } else {
-    //         return chores;
-    //       }
-    //     });
-
-    //     setUserProfile((prevProfile) => ({
-    //       ...prevProfile,
-    //       userChores: updatedUserChores,
-    //     }));
-    //   };
-
-
     return (
-        <div>
+        <div className="details">
             <h2>Users Details</h2>
-            <Table>
+            <Table  >
                 <thead>
-                    <tr>
+                    <tr className="detail-table">
                         <th>Name</th>
                         <th>Address</th>
                         <th>Email</th>
@@ -47,11 +31,11 @@ export const UserProfileDetails = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr key={userProfile.id}>
+                    <tr key={userProfile.id} className="detail-table">
                         <th scope="row">{`${userProfile?.firstName} ${userProfile?.lastName}`}</th>
-                        <td>{userProfile?.address}</td>
-                        <td>{userProfile?.email}</td>
-                        <td>
+                        <td  className="detail-table">{userProfile?.address}</td>
+                        <td  className="detail-table">{userProfile?.email}</td>
+                        <td  className="detail-table">
                             <ul>
                                 {userProfile?.userChores?.map(chores => (
                                     <li key={chores.id}>

@@ -14,15 +14,8 @@ code {
     monospace;
 }
 
+/* this is the class name given to index.html for body */
 .chores-container{
-  background-color:rgba(30, 90, 30, 0.753);
-  /* background-image: url'../images/Chore Chart.jpg'; */
-  /* background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  width: 200px;
-  height: 200px;
-  
-  border-radius: 50%;  */
+  /* background-color:rgba(30, 90, 30, 0.753); */
 }
+

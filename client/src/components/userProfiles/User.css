@@ -1,3 +1,44 @@
-.users{
+.users {
     text-align: center;
+}
+
+.btn {
+    background-color: rgb(158, 197, 158);
+    margin-bottom: 10px;
+}
+
+.user-list {
+    background-color: rgba(30, 90, 30, 0.753);
+    min-height: 100vh;
+}
+
+.card {
+    background-color: rgba(243, 228, 228, 0.863);
+    margin-top: 20px;
+}
+
+.details {
+    background-color: rgba(30, 90, 30, 0.753);
+    min-height: 100vh;
+}
+
+.detail-table th {
+    background-color: rgba(243, 228, 228, 0.863);
+}
+
+.detail-table td{
+    background-color: rgba(243, 228, 228, 0.863);
+}
+
+.form {
+    border: solid green;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
