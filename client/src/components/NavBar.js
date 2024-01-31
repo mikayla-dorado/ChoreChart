@@ -11,6 +11,7 @@ import {
     NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
+import "./NavBar.css"
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
     const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
 
     return (
         <div>
-            <Navbar color="light" light fixed="true" expand="lg">
+            <Navbar className="navbar"  light fixed="true" expand="lg">
                 <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
                     Chore Chart
                 </NavbarBrand>
@@ -51,7 +52,8 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                             </Nav>
                         </Collapse>
                         <Button
-                            color="primary"
+                        className="logout"
+                            
                             onClick={(e) => {
                                 e.preventDefault();
                                 setOpen(false);

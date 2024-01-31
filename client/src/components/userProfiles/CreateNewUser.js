@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { createUser } from "../../managers/userProfileManager"
 import { FormGroup, Form, Label, Input, Button } from "reactstrap"
+import "./User.css"
 
 
 export const CreateNewUser = () => {
@@ -38,8 +39,8 @@ export const CreateNewUser = () => {
 
     return (
         <div>
-            <h2>Add a New User</h2>
-            <Form>
+            <h2 className="users">Add a New User</h2>
+            <Form className="form">
                 <FormGroup>
                     <Label>First Name</Label>
                     <Input
@@ -80,7 +81,7 @@ export const CreateNewUser = () => {
                         }}
                     />
                 </FormGroup>
-                <Button onClick={handleSubmitBtn} color="success">
+                <Button onClick={handleSubmitBtn} color="secondary">
                     Submit
                 </Button>
             </Form>
