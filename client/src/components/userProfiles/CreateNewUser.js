@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { createUser } from "../../managers/userProfileManager"
 import { FormGroup, Form, Label, Input, Button } from "reactstrap"
 import "./User.css"
+import background from "../../images/flowerbackground.jpg"
 
 
 export const CreateNewUser = () => {
@@ -38,7 +39,7 @@ export const CreateNewUser = () => {
     }
 
     return (
-        <div>
+        <div className="add-user" style={{ backgroundImage: `url(${background})` }}>
             <h2 className="users">Add a New User</h2>
             <Form className="form">
                 <FormGroup>
@@ -81,7 +82,7 @@ export const CreateNewUser = () => {
                         }}
                     />
                 </FormGroup>
-                <Button onClick={handleSubmitBtn} color="secondary">
+                <Button onClick={handleSubmitBtn} className="submit-btn">
                     Submit
                 </Button>
             </Form>

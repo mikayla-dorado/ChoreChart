@@ -19,8 +19,8 @@ export const UserProfileDetails = () => {
 
     return (
         <div className="details">
-            <h2>Users Details</h2>
-            <Table  >
+            <h2 className="user-details">Users Details</h2>
+            <Table>
                 <thead>
                     <tr className="detail-table">
                         <th>Name</th>

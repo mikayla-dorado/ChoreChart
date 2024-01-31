@@ -4,6 +4,8 @@ import { getChoreById, updateChore } from "../../managers/choreManager"
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { getUserProfiles } from "../../managers/userProfileManager";
 import { getRooms } from "../../managers/roomManager";
+import background from "../../images/greenbackground.jpg"
+import "./Chore.css"
 
 
 export const EditChore = () => {
@@ -58,9 +60,9 @@ export const EditChore = () => {
     }
 
     return (
-        <>
-            <h2>Edit Chore</h2>
-            <Form>
+        <div className="edit" style={{ backgroundImage: `url(${background})` }}>
+            <h2 className="chores">Edit Chore</h2>
+            <Form className="form">
                 <FormGroup>
                     <Label>Name:</Label>
                     <Input
@@ -139,10 +141,10 @@ export const EditChore = () => {
                         ))}
                     </select>
                 </FormGroup>
-            </Form>
-            <div className="submit-btn-container">
-                <Button type="submit" color="success" onClick={e => handleUpdateBtn(e)}>Submit Edit</Button>
+                <div className="submit-btn-container">
+                <Button type="submit" className="submit-btn" onClick={e => handleUpdateBtn(e)}>Submit Edit</Button>
             </div>
-        </>
+            </Form>
+        </div>
     )
 }
