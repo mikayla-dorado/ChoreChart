@@ -34,6 +34,9 @@ export const UserProfileList = ({ loggedInUser }) => {
     return (
         <div className="user-list">
             <h2 className="users">Users</h2>
+            <Button onClick={handleCreateUserBtn} className="mt-3">
+                Add User
+            </Button>
             <Row xs="1" sm="2" md="3" lg="4">
                 {userProfiles.map((p) => (
                     <Col key={p.id} className="mb-4">
@@ -45,29 +48,27 @@ export const UserProfileList = ({ loggedInUser }) => {
                                 Details
                             </Link>
                             {loggedInUser.roles.includes("Admin") && (
-                                <>
+                                <div className="d-flex flex-column">
                                     <Button
-                                        // color="danger"
                                         onClick={(event) => handleDeleteBtn(event, p.id)}
                                         className="mr-2"
                                     >
                                         Delete
                                     </Button>
                                     <Button
-                                        // color="success"
                                         onClick={(event) => handleUpdateBtn(event, p.id)}
+                                        className="mr-2"
                                     >
                                         Edit
                                     </Button>
-                                </>
+                                   
+                                </div>
                             )}
                         </Card>
                     </Col>
                 ))}
             </Row>
-            <Button onClick={handleCreateUserBtn} className="mt-3">
-                Add User
-            </Button>
+            
         </div>
     );
 };

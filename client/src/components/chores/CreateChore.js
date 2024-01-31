@@ -5,6 +5,7 @@ import { FormGroup, Label, Input, Button, Form } from "reactstrap";
 import { getRooms } from "../../managers/roomManager";
 import { getUserProfiles } from "../../managers/userProfileManager";
 import "./Chore.css";
+import background from "../../images/flowerbackground.jpg"
 
 export const CreateChore = () => {
     const [chores, setChores] = useState([]);
@@ -52,7 +53,7 @@ export const CreateChore = () => {
     };
 
     return (
-        <div>
+        <div className="create" style={{ backgroundImage: `url(${background})` }}>
             <h2 className="chores">Add a New Chore</h2>
             <Form className="form">
                 <FormGroup>
@@ -132,7 +133,7 @@ export const CreateChore = () => {
                         ))}
                     </Input>
                 </FormGroup>
-                <Button onClick={handleSubmitBtn}>Submit New Chore</Button>
+                <Button onClick={handleSubmitBtn} className="submit-btn">Submit New Chore</Button>
             </Form>
         </div>
     );

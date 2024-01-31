@@ -3,6 +3,7 @@ import { getUserProfileById, updateUser } from "../../managers/userProfileManage
 import { useNavigate, useParams } from "react-router-dom"
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import "./User.css"
+import background from "../../images/greenbackground.jpg"
 
 
 export const EditUserProfile = () => {
@@ -30,8 +31,8 @@ export const EditUserProfile = () => {
     }
 
     return (
-        <>
-            <h2>Edit User</h2>
+        <div className="edit" style={{ backgroundImage: `url(${background})` }}>
+            <h2 className="users">Edit User</h2>
             <Form className="form">
                 <FormGroup>
                     <Label>First Name:</Label>
@@ -90,9 +91,9 @@ export const EditUserProfile = () => {
                     />
                 </FormGroup>
                 <div className="submit-btn-container">
-                    <Button type="submit" color="success" onClick={e => handleUpdateBtn(e)}>Submit Edit</Button>
+                    <Button type="submit" className="submit-btn" onClick={e => handleUpdateBtn(e)}>Submit Edit</Button>
                 </div>
             </Form>
-        </>
+        </div>
     )
 }

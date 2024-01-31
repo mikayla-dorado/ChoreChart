@@ -1,6 +1,7 @@
 .chore-list {
     background-color: rgba(30, 90, 30, 0.753);
     min-height: 100vh;
+    font-family: 'Consolas', monospace;
 }
 
 .detail-table th {
@@ -9,9 +10,22 @@
 
 .detail-table td{
     background-color: rgba(243, 228, 228, 0.863);
+    font-family: 'Consolas', monospace;
 }
 
 .chores {
     text-align: center;
 }
 
+.chore {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.submit-btn {
+    background-color: rgba(30, 90, 30, 0.753);
+}
+
+.edit {
+    min-height: 100vh;
+}

@@ -5,6 +5,7 @@ import { getUserProfiles } from "../../managers/userProfileManager"
 import { getRoomsById } from "../../managers/roomManager"
 import { Table } from "reactstrap"
 
+
 export const ChoreDetails = () => {
     const [chores, setChores] = useState([])
     const [users, setUsers] = useState([])
@@ -31,12 +32,12 @@ export const ChoreDetails = () => {
 
     
     return (
-        <div>
-            <h2>Chore Details</h2>
+        <div className="chore-list">
+            <h2 className="chore">Chore Details</h2>
             <Table>
-                <thead>
+                <thead className="detail-table">
                     <tr>
-                        <th>Id</th>
+                        {/* <th>Id</th> */}
                         <th>Name</th>
                         <th>Description</th>
                         <th>Due Date</th>
@@ -46,8 +47,8 @@ export const ChoreDetails = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr key={chores.id}>
-                        <td scope="row">{`${chores.id}`}</td>
+                    <tr key={chores.id} className="detail-table">
+                        {/* <td scope="row">{`${chores.id}`}</td> */}
                         <td>{chores?.name}</td>
                         <td>{chores?.description}</td>
                         <td>{chores?.dueDate?.slice(0, 10)}</td>
