@@ -58,7 +58,8 @@ namespace ChoreChart.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     DueDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Status = table.Column<string>(type: "text", nullable: false)
+                    Status = table.Column<string>(type: "text", nullable: false),
+                    Comment = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -243,25 +244,25 @@ namespace ChoreChart.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "8a678408-be98-4322-b171-ed0c565c7594", "Admin", "admin" });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "450e0b54-3683-42c6-a758-78214f9cef22", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "2408c21a-1701-43c1-89a4-ce1cc709da6f", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEGkyO/W0vLusWjNlsg5gNrSq0MBSldyCiYKuJKrV7p7SJfWiY1hXJoMqsQ6tFEaTXw==", null, false, "4f63792f-1d4f-4975-a319-d864df5869ce", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "c4c2c047-a8d0-441d-a401-59a8510278b6", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEEVpx/qAV+RJVF1T9ET6LPJH+HQXSQ0487ckViXeIkIgIWmgu/H+LzB91cPvfTiPvQ==", null, false, "a3fb8bb5-1001-4530-8a06-01b1443969d1", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "chores",
-                columns: new[] { "Id", "Description", "DueDate", "Name", "Status" },
+                columns: new[] { "Id", "Comment", "Description", "DueDate", "Name", "Status" },
                 values: new object[,]
                 {
-                    { 1, "Dust all wood surfaces", new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dust", "In Progress" },
-                    { 2, "Sweep all floors", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sweep", "Completed" },
-                    { 3, "Wipe down all kitchen counters", new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Counters", "Pending" },
-                    { 4, "Mop all floors after sweeping", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mop", "Completed" },
-                    { 5, "Wash all Dishes", new DateTime(2024, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "Do Dishes", "In Progress" },
-                    { 6, "Organize totes", new DateTime(2024, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Organize Storage Totes", "Pending" },
-                    { 7, "Fold and put away clean laudry", new DateTime(2024, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Laundry", "In Progress" }
+                    { 1, "Prefer the Pledge spray over the duster", "Dust all wood surfaces", new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dust", "In Progress" },
+                    { 2, "", "Sweep all floors", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sweep", "Completed" },
+                    { 3, "", "Wipe down all kitchen counters", new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Counters", "Pending" },
+                    { 4, "", "Mop all floors after sweeping", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mop", "Completed" },
+                    { 5, "", "Wash all Dishes", new DateTime(2024, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "Do Dishes", "In Progress" },
+                    { 6, "Organize winter clothes in storage totes", "Organize totes", new DateTime(2024, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Organize Storage Totes", "Pending" },
+                    { 7, "Completed colors, need to wash towels", "Fold and put away clean laudry", new DateTime(2024, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Laundry", "In Progress" }
                 });
 
             migrationBuilder.InsertData(

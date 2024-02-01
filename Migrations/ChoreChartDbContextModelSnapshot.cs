@@ -30,6 +30,10 @@ namespace ChoreChart.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -53,6 +57,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 1,
+                            Comment = "Prefer the Pledge spray over the duster",
                             Description = "Dust all wood surfaces",
                             DueDate = new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dust",
@@ -61,6 +66,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 2,
+                            Comment = "",
                             Description = "Sweep all floors",
                             DueDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sweep",
@@ -69,6 +75,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 3,
+                            Comment = "",
                             Description = "Wipe down all kitchen counters",
                             DueDate = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Clean Counters",
@@ -77,6 +84,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 4,
+                            Comment = "",
                             Description = "Mop all floors after sweeping",
                             DueDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Mop",
@@ -85,6 +93,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 5,
+                            Comment = "",
                             Description = "Wash all Dishes",
                             DueDate = new DateTime(2024, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Do Dishes",
@@ -93,6 +102,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 6,
+                            Comment = "Organize winter clothes in storage totes",
                             Description = "Organize totes",
                             DueDate = new DateTime(2024, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Organize Storage Totes",
@@ -101,6 +111,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 7,
+                            Comment = "Completed colors, need to wash towels",
                             Description = "Fold and put away clean laudry",
                             DueDate = new DateTime(2024, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Laundry",
@@ -308,7 +319,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "8a678408-be98-4322-b171-ed0c565c7594",
+                            ConcurrencyStamp = "450e0b54-3683-42c6-a758-78214f9cef22",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -407,13 +418,13 @@ namespace ChoreChart.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2408c21a-1701-43c1-89a4-ce1cc709da6f",
+                            ConcurrencyStamp = "c4c2c047-a8d0-441d-a401-59a8510278b6",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEGkyO/W0vLusWjNlsg5gNrSq0MBSldyCiYKuJKrV7p7SJfWiY1hXJoMqsQ6tFEaTXw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEVpx/qAV+RJVF1T9ET6LPJH+HQXSQ0487ckViXeIkIgIWmgu/H+LzB91cPvfTiPvQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4f63792f-1d4f-4975-a319-d864df5869ce",
+                            SecurityStamp = "a3fb8bb5-1001-4530-8a06-01b1443969d1",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

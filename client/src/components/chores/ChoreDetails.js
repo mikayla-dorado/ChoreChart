@@ -17,6 +17,7 @@ export const ChoreDetails = () => {
     useEffect(() => {
         getChoreById(id).then(array => {
             setChores(array)
+            console.log(chores)
         })
     }, [id])
 
@@ -30,7 +31,7 @@ export const ChoreDetails = () => {
         })
     }, [id])
 
-    
+
     return (
         <div className="chore-list">
             <h2 className="chore">Chore Details</h2>
@@ -76,6 +77,18 @@ export const ChoreDetails = () => {
                                     </div>
                                 ))}
                         </td>
+                    </tr>
+                </tbody>
+            </Table>
+            <Table>
+                <thead className="detail-table">
+                    <tr key={chores.id}>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody className="detail-table">
+                    <tr key={chores.id}>
+                        <td>{chores?.comment}</td>
                     </tr>
                 </tbody>
             </Table>

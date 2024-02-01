@@ -75,7 +75,7 @@ export const ChoreList = ({ loggedInUser }) => {
                                             onClick={(event) => handleCommentBtn(event)}
                                             className="mb-2"
                                         >
-                                            Comments
+                                            Add A Comment
                                         </Button>
                                     </>
                                 )}
