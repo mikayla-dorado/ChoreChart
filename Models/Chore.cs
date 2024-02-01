@@ -9,6 +9,7 @@ public class Chore
     public string Description { get; set; }
     public DateTime DueDate { get; set; }
     public string Status { get; set; }
+    public string? Comment { get; set; }
     //public UserChores UserChores { get; set; }
     public List<UserChores>? UserChores { get; set; }
     //public List<UserProfile> UserProfiles { get; set; }

@@ -54,13 +54,13 @@ public class ChoreChartDbContext : IdentityDbContext<IdentityUser>
         });
         modelBuilder.Entity<Chore>().HasData(new Chore[]
         {
-            new Chore {Id = 1, Name = "Dust", Description = "Dust all wood surfaces", DueDate = new DateTime(2024, 1, 25), Status = "In Progress"},
-            new Chore {Id = 2, Name = "Sweep", Description = "Sweep all floors", DueDate = new DateTime(2024, 1, 19), Status = "Completed"},
-            new Chore {Id = 3, Name = "Clean Counters", Description = "Wipe down all kitchen counters", DueDate = new DateTime(2024, 1, 24), Status = "Pending"},
-            new Chore {Id = 4, Name = "Mop", Description = "Mop all floors after sweeping", DueDate = new DateTime(2024, 1, 19), Status = "Completed"},
-            new Chore {Id = 5, Name = "Do Dishes", Description = "Wash all Dishes", DueDate = new DateTime(2024, 1, 26), Status = "In Progress"},
-            new Chore {Id = 6, Name = "Organize Storage Totes", Description = "Organize totes", DueDate = new DateTime(2024, 1, 30), Status = "Pending"},
-            new Chore {Id = 7, Name = "Laundry", Description = "Fold and put away clean laudry", DueDate = new DateTime(2024, 1, 28), Status = "In Progress"},
+            new Chore {Id = 1, Name = "Dust", Description = "Dust all wood surfaces", DueDate = new DateTime(2024, 1, 25), Status = "In Progress", Comment = "Prefer the Pledge spray over the duster"},
+            new Chore {Id = 2, Name = "Sweep", Description = "Sweep all floors", DueDate = new DateTime(2024, 1, 19), Status = "Completed", Comment = ""},
+            new Chore {Id = 3, Name = "Clean Counters", Description = "Wipe down all kitchen counters", DueDate = new DateTime(2024, 1, 24), Status = "Pending", Comment = ""},
+            new Chore {Id = 4, Name = "Mop", Description = "Mop all floors after sweeping", DueDate = new DateTime(2024, 1, 19), Status = "Completed", Comment = ""},
+            new Chore {Id = 5, Name = "Do Dishes", Description = "Wash all Dishes", DueDate = new DateTime(2024, 1, 26), Status = "In Progress", Comment = ""},
+            new Chore {Id = 6, Name = "Organize Storage Totes", Description = "Organize totes", DueDate = new DateTime(2024, 1, 30), Status = "Pending", Comment = "Organize winter clothes in storage totes"},
+            new Chore {Id = 7, Name = "Laundry", Description = "Fold and put away clean laudry", DueDate = new DateTime(2024, 1, 28), Status = "In Progress", Comment = "Completed colors, need to wash towels"},
         });
         modelBuilder.Entity<Room>().HasData(new Room[]
         {

@@ -32,6 +32,7 @@ public class ChoreController : ControllerBase
            Description = c.Description,
            DueDate = c.DueDate,
            Status = c.Status,
+           Comment = c.Comment,
            UserChores = c.UserChores.Select(uc => new UserChoresDTO
            {
                Id = uc.Id,
@@ -105,7 +106,7 @@ public class ChoreController : ControllerBase
 
     //edit a chore as an admin
     [HttpPut("{id}/{userProfileId}/{roomId}")]
-    //[Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin")]
     public IActionResult UpdateChore(int id, Chore chore, int userProfileId, int roomId)
     {
         Chore? choreUpdate = _dbContext.chores
@@ -128,5 +129,41 @@ public class ChoreController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
+
+//post a comment
+    // [HttpPost]
+    // [Authorize]
+    // public IActionResult PostComment()
+    // {
+
+    // }
+
+[HttpPost("{choreId}")]
+[Authorize]
+public IActionResult PostComment(int choreId, [FromBody] string comment)
+{
+    if (string.IsNullOrWhiteSpace(comment))
+    {
+        return BadRequest("Invalid comment data");
+    }
+
+    var chore = _dbContext.chores.Find(choreId);
+
+    if (chore == null)
+    {
+        return NotFound("Chore not found");
+    }
+
+    // Append the new comment to the existing comments
+    chore.Comment = string.IsNullOrEmpty(chore.Comment)
+        ? comment
+        : $"{chore.Comment}\n{comment}";
+
+    _dbContext.SaveChanges();
+
+    // Optionally, you can return the updated chore or other relevant information
+    return Ok(chore);
+}
+
 }
 
