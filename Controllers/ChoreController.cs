@@ -63,7 +63,7 @@ public class ChoreController : ControllerBase
 
     //get Chores by Id
     [HttpGet("{id}")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetById(int id)
     {
         Chore? chore = _dbContext
@@ -106,7 +106,7 @@ public class ChoreController : ControllerBase
 
     //edit a chore as an admin
     [HttpPut("{id}/{userProfileId}/{roomId}")]
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult UpdateChore(int id, Chore chore, int userProfileId, int roomId)
     {
         Chore? choreUpdate = _dbContext.chores
@@ -130,40 +130,53 @@ public class ChoreController : ControllerBase
         return NoContent();
     }
 
-//post a comment
-    // [HttpPost]
-    // [Authorize]
-    // public IActionResult PostComment()
-    // {
 
-    // }
-
-[HttpPost("{choreId}")]
-[Authorize]
-public IActionResult PostComment(int choreId, [FromBody] string comment)
-{
-    if (string.IsNullOrWhiteSpace(comment))
+//get comments by a chore id
+    [HttpGet("comments/{choreId}")]
+    //[Authorize]
+    public IActionResult GetCommentsByChoreId(int choreId)
     {
-        return BadRequest("Invalid comment data");
+        var chore = _dbContext.chores
+            .FirstOrDefault(c => c.Id == choreId);
+
+        if (chore == null)
+        {
+            return NotFound("Chore not found");
+        }
+
+        // Assuming "Comment" is a property on the Chore model
+        var comments = new List<string> { chore.Comment };
+
+        return Ok(comments);
     }
 
-    var chore = _dbContext.chores.Find(choreId);
 
-    if (chore == null)
+    [HttpPost("{choreId}")]
+    //[Authorize]
+    public IActionResult PostComment(int choreId, [FromBody] string comment)
     {
-        return NotFound("Chore not found");
+        if (string.IsNullOrWhiteSpace(comment))
+        {
+            return BadRequest("Invalid comment data");
+        }
+
+        var chore = _dbContext.chores.Find(choreId);
+
+        if (chore == null)
+        {
+            return NotFound("Chore not found");
+        }
+
+        // Append the new comment to the existing comments
+        chore.Comment = string.IsNullOrEmpty(chore.Comment)
+            ? comment
+            : $"{chore.Comment}\n{comment}";
+
+        _dbContext.SaveChanges();
+
+        // Optionally, you can return the updated chore or other relevant information
+        return Ok(chore);
     }
-
-    // Append the new comment to the existing comments
-    chore.Comment = string.IsNullOrEmpty(chore.Comment)
-        ? comment
-        : $"{chore.Comment}\n{comment}";
-
-    _dbContext.SaveChanges();
-
-    // Optionally, you can return the updated chore or other relevant information
-    return Ok(chore);
-}
 
 }
 

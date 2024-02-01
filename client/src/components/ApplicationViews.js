@@ -79,7 +79,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
             }
           />
-          <Route path="comment"
+          <Route path=":id/comment"
             element={<AuthorizedRoute loggedInUser={loggedInUser}>
               <CreateComments loggedInUser={loggedInUser} />
             </AuthorizedRoute>

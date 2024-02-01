@@ -1,4 +1,4 @@
-const _apiUrl = "/api/comment"
+const _apiUrl = "/api/chore/comment"
 
 export const createComment = (choreId, commentObj) => {
     return fetch(`${_apiUrl}/${choreId}`, {
@@ -10,6 +10,6 @@ export const createComment = (choreId, commentObj) => {
     })
 }
 
-export  const getCommentsByChoreId = (id) => {
-    return fetch(_apiUrl).then(res => res.json())
+export const getCommentsByChoreId = (id) => {
+    return fetch(`${_apiUrl}/${id}`).then(res => res.json())
 }
