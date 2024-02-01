@@ -31,9 +31,9 @@ export const ChoreList = ({ loggedInUser }) => {
         navigate(`${id}/edit`);
     };
 
-    const handleCommentBtn = (event) => {
+    const handleCommentBtn = (event, choreId ) => {
         event.preventDefault()
-        navigate("comment")
+        navigate(`${choreId}/comment`)
     }
 
     return (
@@ -72,7 +72,7 @@ export const ChoreList = ({ loggedInUser }) => {
                                         </Button>
                                         <Button
                                             color="secondary"
-                                            onClick={(event) => handleCommentBtn(event)}
+                                            onClick={(event) => handleCommentBtn(event, c.id)}
                                             className="mb-2"
                                         >
                                             Add A Comment
