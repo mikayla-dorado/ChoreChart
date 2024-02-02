@@ -1,27 +1,33 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { getChoreById, updateChore } from "../../managers/choreManager"
+import { getChoreById, updateChore, getChores } from "../../managers/choreManager"
 import { getUserProfiles } from "../../managers/userProfileManager"
 import { getRoomsById } from "../../managers/roomManager"
 import { Table, Button, Form, FormGroup, Label, Input } from "reactstrap"
-import { createComment } from "../../managers/commentManager"
+import { deleteComment } from "../../managers/commentManager"
 
 
-export const ChoreDetails = () => {
+export const ChoreDetails = ({ choreId }) => {
     const [chores, setChores] = useState([])
     const [users, setUsers] = useState([])
     const [rooms, setRooms] = useState([])
     const [comment, setComment] = useState("");
 
     const { id } = useParams();
-    console.log("ID from URL:", id);
     const navigate = useNavigate()
+
+    const getAndSetChores = () => {
+        getChores().then((array) => setChores(array));
+    };
+
+    useEffect(() => {
+        getAndSetChores();
+    }, []);
 
 
     useEffect(() => {
         getChoreById(id).then(array => {
             setChores(array)
-            console.log(chores)
         })
     }, [id])
 
@@ -38,37 +44,21 @@ export const ChoreDetails = () => {
     }, [id])
 
 
-    // const handleCommentSubmit = (e) => {
-    //     e.preventDefault();
+    // const handleDeleteComment = (event, choreId) => {
+    //     event.preventDefault()
+    //     deleteComment(choreId).then(() => { getAndSetChores() });
+    // };
+    const handleDeleteComment = (event, choreId) => {
+        event.preventDefault();
 
-    //     if (chores.length === 0) {
-    //         console.error("No chore found.");
-    //         return;
-    //       }
-
-    //     // Include necessary chore details along with the comment
-    //     const updatedChore = {
-    //         ...chores[0],
-    //         comment: comment,
-    //     };
-
-    //     // Call your manager function to update the chore with the new comment
-    //     // createComment(updatedChore.id, comment).then(() => {
-    //     //     // Optionally, you can refresh the chore details after adding a comment
-    //     //     getChoreById(id).then((updatedChore) => {
-    //     //         setChores([updatedChore]);
-    //     //         setComment(""); // Clear the comment input field
-    //     //     });
-    //     // });
-    //     createComment(updatedChore.id, comment).then(() => {
-    //         // Optionally, you can refresh the chore details after adding a comment
-    //         getChoreById(updatedChore.id).then((updatedChore) => {
-    //           setChores([updatedChore]); // Update the state with the new chore
-    //           setComment(""); // Clear the comment input field
-    //         });
-    //       });
-          
-    //};
+        if (choreId) {
+            deleteComment(choreId).then(() => {
+                getAndSetChores();
+            });
+        } else {
+            console.error("Invalid choreId");
+        }
+    };
 
 
     return (
@@ -77,7 +67,6 @@ export const ChoreDetails = () => {
             <Table>
                 <thead className="detail-table">
                     <tr>
-                        {/* <th>Id</th> */}
                         <th>Name</th>
                         <th>Description</th>
                         <th>Due Date</th>
@@ -88,7 +77,6 @@ export const ChoreDetails = () => {
                 </thead>
                 <tbody>
                     <tr key={chores.id} className="detail-table">
-                        {/* <td scope="row">{`${chores.id}`}</td> */}
                         <td>{chores?.name}</td>
                         <td>{chores?.description}</td>
                         <td>{chores?.dueDate?.slice(0, 10)}</td>
@@ -119,31 +107,21 @@ export const ChoreDetails = () => {
                     </tr>
                 </tbody>
             </Table>
-            <Table>
+            <Table className="detail-table">
                 <thead className="detail-table">
-                    <tr key={chores.id}>
-                        <th>Comments</th>
+                    <tr key={chores.id} className="detail-table">
+                        <th className="detail-table">Comments</th>
                     </tr>
                 </thead>
-                <tbody className="detail-table">
-                    <tr key={chores.id}>
+                <tbody>
+                    <tr key={chores.id} className="detail-table">
                         <td>{chores?.comment}</td>
+                        <td className="detail-table"><Button color="secondary" onClick={(event) => handleDeleteComment(event, chores?.id)}>
+                            Delete Comment
+                        </Button></td>
                     </tr>
                 </tbody>
             </Table>
-            {/* <Form onSubmit={handleCommentSubmit}>
-                <FormGroup>
-                    <Label for="comment">Add Comment:</Label>
-                    <Input
-                        type="textarea"
-                        name="comment"
-                        id="comment"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                    />
-                </FormGroup>
-                <Button type="submit">Submit Comment</Button>
-            </Form> */}
         </div>
     )
 }

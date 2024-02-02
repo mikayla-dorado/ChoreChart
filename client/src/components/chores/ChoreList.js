@@ -40,7 +40,7 @@ export const ChoreList = ({ loggedInUser }) => {
         <div className="chore-list">
             <h2 className="chores">Chores</h2>
             {loggedInUser.roles.includes("Admin") && (
-                <Button color="success" onClick={handleCreateChoreBtn}>
+                <Button color="secondary" onClick={handleCreateChoreBtn}>
                     Create A New Chore
                 </Button>
             )}

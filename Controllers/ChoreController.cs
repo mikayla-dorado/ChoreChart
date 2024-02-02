@@ -21,7 +21,7 @@ public class ChoreController : ControllerBase
     }
 
     [HttpGet]
-    [Authorize]
+    //[Authorize]
     public IActionResult Get()
     {
         var choresWithUserChores = _dbContext
@@ -134,7 +134,7 @@ public class ChoreController : ControllerBase
     }
 
 
-//get comments by a chore id
+    //get comments by a chore id
     [HttpGet("comments/{choreId}")]
     //[Authorize]
     public IActionResult GetCommentsByChoreId(int choreId)
@@ -154,52 +154,48 @@ public class ChoreController : ControllerBase
     }
 
 
-    // [HttpPost("{choreId}")]
-    // //[Authorize]
-    // public IActionResult PostComment(int choreId, [FromBody] string comment)
-    // {
-    //     if (string.IsNullOrWhiteSpace(comment))
-    //     {
-    //         return BadRequest("Invalid comment data");
-    //     }
-
-    //     var chore = _dbContext.chores.Find(choreId);
-
-    //     if (chore == null)
-    //     {
-    //         return NotFound("Chore not found");
-    //     }
-
-    //     // Append the new comment to the existing comments
-    //     chore.Comment = string.IsNullOrEmpty(chore.Comment)
-    //         ? comment
-    //         : $"{chore.Comment}\n{comment}";
-
-    //     _dbContext.SaveChanges();
-
-    //     // Optionally, you can return the updated chore or other relevant information
-    //     return Ok(chore);
-    // }
-
-[HttpPost("{choreId}")]
-//[Authorize]
-public IActionResult PostComment(int choreId, [FromBody] Chore chore)
-{
-    var existingChore = _dbContext.chores.Find(choreId);
-
-    if (existingChore == null)
+    //this allows users to leave a comment on a chore
+    [HttpPut("comment/{choreId}")]
+    //[Authorize]
+    public IActionResult PostComment(int choreId, [FromBody] Chore chore)
     {
-        return NotFound("Chore not found");
+        var existingChore = _dbContext.chores.Find(choreId);
+
+        if (existingChore == null)
+        {
+            return NotFound("Chore not found");
+        }
+
+        // Update the comment in the existing chore
+        existingChore.Comment = chore.Comment;
+
+        _dbContext.SaveChanges();
+
+        // Optionally, you can return the updated chore or other relevant information
+        return Ok(existingChore);
     }
 
-    // Update the comment in the existing chore
-    existingChore.Comment = chore.Comment;
+    //allows user to delete a comment on a chore
+    [HttpDelete("comment/{choreId}")]
+    //[Authorize]
+    public IActionResult DeleteComment(int choreId)
+    {
+        var existingChore = _dbContext.chores.Find(choreId);
 
-    _dbContext.SaveChanges();
+        if (existingChore == null)
+        {
+            return NotFound("Chore not found");
+        }
 
-    // Optionally, you can return the updated chore or other relevant information
-    return Ok(existingChore);
-}
+        // Remove the comment from the existing chore
+        existingChore.Comment = ""; // Or set it to an empty string depending on your requirements
+
+        _dbContext.SaveChanges();
+
+        // Optionally, you can return the updated chore or other relevant information
+        return Ok(existingChore);
+    }
+
 
 
 }
