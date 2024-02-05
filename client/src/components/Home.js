@@ -1,4 +1,5 @@
 import "./Home.css"
+import "../index.css"
 import ChoreChart from "../images/ChoreChart.jpg"
 
 export const Home = () => {
