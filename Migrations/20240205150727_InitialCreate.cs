@@ -59,7 +59,7 @@ namespace ChoreChart.Migrations
                     Description = table.Column<string>(type: "text", nullable: false),
                     DueDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false),
-                    Comment = table.Column<string>(type: "text", nullable: false)
+                    Comment = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -244,12 +244,12 @@ namespace ChoreChart.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "450e0b54-3683-42c6-a758-78214f9cef22", "Admin", "admin" });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "30f21f7b-05a8-418a-ad17-c73c0c26fed7", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "c4c2c047-a8d0-441d-a401-59a8510278b6", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEEVpx/qAV+RJVF1T9ET6LPJH+HQXSQ0487ckViXeIkIgIWmgu/H+LzB91cPvfTiPvQ==", null, false, "a3fb8bb5-1001-4530-8a06-01b1443969d1", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "f08be466-b391-4b69-9644-8f282d1a1ecb", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEG0ks9POhrR7o6m+YaqhP1tBqkF44pD2JnVyKqkoRWcqiXg37HRzKMEbMmhjPB7q4A==", null, false, "2860df9c-41f5-4c61-a162-5a4d3a412ed3", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "chores",
@@ -257,10 +257,10 @@ namespace ChoreChart.Migrations
                 values: new object[,]
                 {
                     { 1, "Prefer the Pledge spray over the duster", "Dust all wood surfaces", new DateTime(2024, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dust", "In Progress" },
-                    { 2, "", "Sweep all floors", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sweep", "Completed" },
-                    { 3, "", "Wipe down all kitchen counters", new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Counters", "Pending" },
-                    { 4, "", "Mop all floors after sweeping", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mop", "Completed" },
-                    { 5, "", "Wash all Dishes", new DateTime(2024, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "Do Dishes", "In Progress" },
+                    { 2, null, "Sweep all floors", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sweep", "Completed" },
+                    { 3, null, "Wipe down all kitchen counters", new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clean Counters", "Pending" },
+                    { 4, null, "Mop all floors after sweeping", new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mop", "Completed" },
+                    { 5, null, "Wash all Dishes", new DateTime(2024, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "Do Dishes", "In Progress" },
                     { 6, "Organize winter clothes in storage totes", "Organize totes", new DateTime(2024, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Organize Storage Totes", "Pending" },
                     { 7, "Completed colors, need to wash towels", "Fold and put away clean laudry", new DateTime(2024, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Laundry", "In Progress" }
                 });

@@ -107,7 +107,7 @@ export const ChoreDetails = ({ choreId }) => {
                     </tr>
                 </tbody>
             </Table>
-            <Table className="detail-table">
+            {/* <Table className="detail-table">
                 <thead className="detail-table">
                     <tr key={chores.id} className="detail-table">
                         <th className="detail-table">Comments</th>
@@ -119,6 +119,27 @@ export const ChoreDetails = ({ choreId }) => {
                         <td className="detail-table"><Button color="secondary" onClick={(event) => handleDeleteComment(event, chores?.id)}>
                             Delete Comment
                         </Button></td>
+                    </tr>
+                </tbody>
+            </Table> */}
+            <Table>
+                <thead className="detail-table">
+                    <tr key={chores.id} className="detail-table">
+                        <th>Comments</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr key={chores.id} className="detail-table">
+                        <td>{chores?.comment}</td>
+                        <td className="detail-table">
+                            {/* Conditionally render the delete button */}
+                            {chores?.comment && (
+                                <Button color="secondary" onClick={(event) => handleDeleteComment(event, chores?.id)}>
+                                    Delete Comment
+                                </Button>
+                            )}
+                        </td>
                     </tr>
                 </tbody>
             </Table>

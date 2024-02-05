@@ -29,3 +29,8 @@
 .edit {
     min-height: 100vh;
 }
+
+.bg {
+    min-height: 100vh;
+    background-size: cover;
+}

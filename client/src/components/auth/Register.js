@@ -2,6 +2,7 @@ import { useState } from "react";
 import { register } from "../../managers/authManager";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import "./Auth.css"
 
 export default function Register({ setLoggedInUser }) {
   const [firstName, setFirstName] = useState("");
@@ -43,8 +44,9 @@ export default function Register({ setLoggedInUser }) {
   };
 
   return (
+    <div className="register">
     <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Sign Up</h3>
+      <h3 className="head">Sign Up</h3>
       <FormGroup>
         <Label>First Name</Label>
         <Input
@@ -124,7 +126,7 @@ export default function Register({ setLoggedInUser }) {
         Registration Failure
       </p>
       <Button
-        color="primary"
+        color="secondary"
         onClick={handleSubmit}
         disabled={passwordMismatch}
       >
@@ -133,6 +135,7 @@ export default function Register({ setLoggedInUser }) {
       <p>
         Already signed up? Log in <Link to="/login">here</Link>
       </p>
+    </div>
     </div>
   );
 }

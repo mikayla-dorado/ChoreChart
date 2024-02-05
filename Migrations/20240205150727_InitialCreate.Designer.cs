@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChoreChart.Migrations
 {
     [DbContext(typeof(ChoreChartDbContext))]
-    [Migration("20240201155449_InitialCreate")]
+    [Migration("20240205150727_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,6 @@ namespace ChoreChart.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
@@ -68,7 +67,6 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 2,
-                            Comment = "",
                             Description = "Sweep all floors",
                             DueDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Sweep",
@@ -77,7 +75,6 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 3,
-                            Comment = "",
                             Description = "Wipe down all kitchen counters",
                             DueDate = new DateTime(2024, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Clean Counters",
@@ -86,7 +83,6 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 4,
-                            Comment = "",
                             Description = "Mop all floors after sweeping",
                             DueDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Mop",
@@ -95,7 +91,6 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 5,
-                            Comment = "",
                             Description = "Wash all Dishes",
                             DueDate = new DateTime(2024, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Do Dishes",
@@ -321,7 +316,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "450e0b54-3683-42c6-a758-78214f9cef22",
+                            ConcurrencyStamp = "30f21f7b-05a8-418a-ad17-c73c0c26fed7",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -420,13 +415,13 @@ namespace ChoreChart.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c4c2c047-a8d0-441d-a401-59a8510278b6",
+                            ConcurrencyStamp = "f08be466-b391-4b69-9644-8f282d1a1ecb",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEEVpx/qAV+RJVF1T9ET6LPJH+HQXSQ0487ckViXeIkIgIWmgu/H+LzB91cPvfTiPvQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG0ks9POhrR7o6m+YaqhP1tBqkF44pD2JnVyKqkoRWcqiXg37HRzKMEbMmhjPB7q4A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a3fb8bb5-1001-4530-8a06-01b1443969d1",
+                            SecurityStamp = "2860df9c-41f5-4c61-a162-5a4d3a412ed3",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

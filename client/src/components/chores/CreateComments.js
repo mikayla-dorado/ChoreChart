@@ -4,6 +4,7 @@ import { createComment } from "../../managers/commentManager";
 import "./Chore.css";
 import { getChoreById } from "../../managers/choreManager";
 import { useNavigate, useParams } from "react-router-dom";
+import background from "../../images/greenbackground2.jpg"
 
 export const CreateComments = ({ choreId, onCommentAdded }) => {
     const [chore, setChore] = useState({ comment: "" }); // Initialize the state with an empty comment
@@ -36,6 +37,7 @@ export const CreateComments = ({ choreId, onCommentAdded }) => {
     };
 
     return (
+        <div className="bg" style={{ backgroundImage: `url(${background})` }}>
         <Form onSubmit={handleSubmitBtn}>
             <FormGroup>
                 <h2 className="chores">Add A Comment</h2>
@@ -45,11 +47,13 @@ export const CreateComments = ({ choreId, onCommentAdded }) => {
                     placeholder="Add a comment..."
                     value={chore?.comment}
                     onChange={handleInputChange}
+                    style={{ height: "100px" }}
                 />
             </FormGroup>
             <Button type="submit" color="secondary">
                 Add Comment
             </Button>
         </Form>
+        </div>
     );
 };
