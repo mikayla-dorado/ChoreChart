@@ -90,6 +90,12 @@ public class ChoreController : ControllerBase
     [Authorize(Roles = "Admin")]
     public IActionResult PostChore(Chore chore, int userProfileId, int roomId)
     {
+
+        if (chore.Comment == null)
+        {
+            chore.Comment = null;
+        }
+
         _dbContext.chores.Add(chore);
         _dbContext.SaveChanges();
 
@@ -127,6 +133,7 @@ public class ChoreController : ControllerBase
         choreUpdate.Description = chore.Description;
         choreUpdate.DueDate = chore.DueDate;
         choreUpdate.Status = chore.Status;
+        choreUpdate.Comment = chore.Comment;
         choreUpdate.UserChores = chore.UserChores;
 
         _dbContext.SaveChanges();

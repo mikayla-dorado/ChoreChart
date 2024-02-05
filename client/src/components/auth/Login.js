@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../managers/authManager";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import "./Auth.css"
 
 export default function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
@@ -22,8 +23,9 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
+    <div className="login">
     <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Login</h3>
+      <h3 className="head">Login</h3>
       <FormGroup>
         <Label>Email</Label>
         <Input
@@ -50,12 +52,13 @@ export default function Login({ setLoggedInUser }) {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button color="primary" onClick={handleSubmit}>
+      <Button color="secondary" onClick={handleSubmit}>
         Login
       </Button>
       <p>
         Not signed up? Register <Link to="/register">here</Link>
       </p>
+    </div>
     </div>
   );
 }
