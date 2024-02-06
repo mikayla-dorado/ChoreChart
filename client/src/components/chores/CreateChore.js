@@ -54,8 +54,8 @@ export const CreateChore = () => {
 
     return (
         <div className="create" style={{ backgroundImage: `url(${background})` }}>
-            <h2 className="chores">Add a New Chore</h2>
             <Form className="form">
+            <h2 className="chores">Add a New Chore</h2>
                 <FormGroup>
                     <Label for="choreName">Chore Name:</Label>
                     <Input

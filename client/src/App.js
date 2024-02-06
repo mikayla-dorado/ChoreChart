@@ -47,10 +47,6 @@ function App() {
   return (
     <div className={`${isDarkMode ? "dark-mode" : ""} ${additionalClass}`}>
       <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-      {/* <button className="light-view" onClick={toggleDarkMode}>
-        Toggle {isDarkMode ? "Light" : "Dark"} Mode
-      </button> */}
-      {/* Toggle between light and dark mode icons */}
       {isDarkMode ? (
         <MdDarkMode className="mode-icon" onClick={toggleDarkMode} />
       ) : (
