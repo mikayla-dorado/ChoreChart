@@ -31,7 +31,6 @@ export const ChoreList = ({ loggedInUser }) => {
         navigate(`${id}/edit`);
     };
 
-
     const handleCommentBtn = (event, choreId) => {
         event.preventDefault();
 
