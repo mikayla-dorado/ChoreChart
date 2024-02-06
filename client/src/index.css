@@ -30,3 +30,7 @@ code {
 .dark-mode .form {
   background-color: black;
 }
+
+.mode-icon {
+  font-size: 2em;
+}
