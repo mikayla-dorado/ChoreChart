@@ -105,5 +105,4 @@ export const ChoreList = ({ loggedInUser }) => {
             </Row>
         </div>
     );
-
 };
