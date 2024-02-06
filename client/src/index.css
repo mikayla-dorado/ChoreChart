@@ -8,7 +8,8 @@ body {
   height: 100vh;
   font-family: 'Consolas', monospace;
   min-height: 100vh;
-  background-color: rgba(30, 90, 30, 0.753);
+  /* background-color: rgba(30, 90, 30, 0.753); */
+  --bs-body-bg: rgba(30, 90, 30, 0.753);
 }
 
 code {
@@ -20,4 +21,12 @@ code {
   background-color: black;
   color: white;
   min-height: 100vh;
+}
+
+.dark-mode .btn {
+  background-color: grey;
+}
+
+.dark-mode .form {
+  background-color: black;
 }
