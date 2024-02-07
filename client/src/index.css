@@ -34,3 +34,19 @@ code {
 .mode-icon {
   font-size: 2em;
 }
+
+body input[type="text"] {
+  background-color: #f2f2f2;
+}
+
+body input[type="email"] {
+  background-color: #f2f2f2;
+}
+
+body input[type="datetime-local"] {
+  background-color: #f2f2f2;
+}
+
+body input[type="password"] {
+  background-color: #f2f2f2;
+}
