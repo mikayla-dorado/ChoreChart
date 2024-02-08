@@ -76,5 +76,3 @@ export const UserProfileList = ({ loggedInUser }) => {
 };
 
 export default UserProfileList;
-
-//btn-outline-primary 

@@ -20,19 +20,21 @@ export const CreateComments = ({ choreId, onCommentAdded }) => {
         event.preventDefault();
         console.log(chore)
 
-
+        //this deletes the 'userChores' property from the chore object
         delete chore.userChores
         console.log(chore)
-
-        //Assuming createComment function accepts chore object
+       
         createComment(chore.id, chore).then((res) => {
             navigate("/chores");
         });
     };
 
     const handleInputChange = (event) => {
+        //created shallow copy of the chore object so we dont directly modify the og state
         const stateCopy = { ...chore };
+        //updates copied object with a new value
         stateCopy[event.target.name] = event.target.value;
+        //sets statewith updated object stateCopy
         setChore(stateCopy);
     };
 
