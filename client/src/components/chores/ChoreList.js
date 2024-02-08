@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { getChores, deleteChore } from "../../managers/choreManager";
-import { Button, Card, Row, Col } from "reactstrap";
+import { Button, Card, Row, Col, Input } from "reactstrap";
 import "./Chore.css";
 
 export const ChoreList = ({ loggedInUser }) => {
     const [chores, setChores] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchByRoom, setSearchByRoom] = useState("");
+
+
     const navigate = useNavigate();
 
     const getAndSetChores = () => {
@@ -48,6 +52,17 @@ export const ChoreList = ({ loggedInUser }) => {
     };
 
 
+    //search by chore works, nothing appears for search by room
+    const filteredChores = chores.filter((chore) => {
+        const includesSearchTerm =
+            !searchTerm ||
+            (chore?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (chore?.description || '').toLowerCase().includes(searchTerm.toLowerCase());
+
+        return includesSearchTerm;
+    });
+
+
     return (
         <div className="chore-list">
             <h2 className="chores">Chores</h2>
@@ -56,8 +71,16 @@ export const ChoreList = ({ loggedInUser }) => {
                     Create A New Chore
                 </Button>
             )}
+            <div className="searchbar">
+            <input
+                type="text"
+                placeholder="Search Chores"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            </div>
             <Row xs="1" sm="2" md="3" lg="4">
-                {chores.map((c) => {
+                {filteredChores.map((c) => {
                     // Declare isUserAssociated here
                     const isUserAssociated = c.userChores.some((userChore) => userChore.userProfileId === loggedInUser.id);
 
