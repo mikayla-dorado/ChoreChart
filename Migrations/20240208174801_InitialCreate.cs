@@ -244,12 +244,12 @@ namespace ChoreChart.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "9b89f4f6-8c96-4249-a82a-4bc793becf46", "Admin", "admin" });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "68901cf1-be76-4d50-872d-878c3399cba0", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "8a8389bc-45e0-471b-93ee-e1f8ac6bc4f5", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEFbOC3L0lklu3KE0BLT3RZ4V49cVDQfD6oO9YzngMJxV3jZinR76cVByl22Hsgr4UQ==", null, false, "0a0bb96d-0876-4a85-bc8e-9d3ee4b8faf3", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "88b95f0f-5b1f-44c9-a94d-67bfa867cfcc", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEJaL/rQ4eAr+iRmaEaapK+jjAkdUhRe9inclxCPVtEM55FDVVS5PL/E0vLZK+EJzOA==", null, false, "a3c74b58-4535-4026-ae04-878334764a83", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "chores",
