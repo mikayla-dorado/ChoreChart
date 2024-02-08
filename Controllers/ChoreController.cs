@@ -154,7 +154,6 @@ public class ChoreController : ControllerBase
             return NotFound("Chore not found");
         }
 
-        // Assuming "Comment" is a property on the Chore model
         var comments = new List<string> { chore.Comment };
 
         return Ok(comments);
@@ -202,8 +201,5 @@ public class ChoreController : ControllerBase
         // Optionally, you can return the updated chore or other relevant information
         return Ok(existingChore);
     }
-
-
-
 }
 

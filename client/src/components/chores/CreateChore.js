@@ -32,11 +32,13 @@ export const CreateChore = () => {
         event.preventDefault();
         console.log("clicked");
 
+        //requires user to enter info for room and user
         if (!selectedUserProfile || !selectedRoom) {
             setErrors(["Please select a user and a room for the chore."]);
             return;
         }
 
+        //creates the new chore
         const choreCreated = {
             name: name,
             description: description,
@@ -44,6 +46,7 @@ export const CreateChore = () => {
             status: status,
         };
 
+        //passes in choreCreated object and all IDs of the user and room selected
         createChore(choreCreated, selectedUserProfile.id, selectedRoom.id).then((res) => {
             if (res.errors) {
                 setErrors(res.errors);

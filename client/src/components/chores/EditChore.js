@@ -29,6 +29,7 @@ export const EditChore = () => {
     const handleUpdateBtn = (event) => {
         event.preventDefault()
 
+        //requires both user and room info to be inputed
         if (!selectedUserProfile || !selectedRoom) {
             setErrors(["Please select a user and a room for the chore."])
             return;
@@ -47,16 +48,13 @@ export const EditChore = () => {
                 }
             ]
         }
-        console.log("Chore Update Data:", choreUpdate);
-        updateChore(choreUpdate, selectedUserProfile.id, selectedRoom.id).then((res) => {
-            console.log("Update Chore Response:", res);
+        updateChore(choreUpdate, selectedUserProfile.id, selectedRoom.id).then((res) => {;
             if (res.errors) {
                 setErrors(res.errors)
             } else {
                 navigate("/chores")
             }
         })
-
     }
 
     return (
@@ -71,6 +69,7 @@ export const EditChore = () => {
                         value={chore?.name}
                         onChange={(event) => {
                             setChore(prevChore => ({
+                                //creates new object based on the previous state
                                 ...prevChore,
                                 [event.target.name]: event.target.value
                             }))

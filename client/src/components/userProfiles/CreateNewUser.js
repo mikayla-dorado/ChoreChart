@@ -17,7 +17,6 @@ export const CreateNewUser = () => {
 
     const handleSubmitBtn = (event) => {
         event.preventDefault()
-        console.log("Email entered:", email);
 
         const userCreated = {
             firstName: firstName,

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { getChoreById, updateChore, getChores } from "../../managers/choreManager"
+import { getChoreById, getChores } from "../../managers/choreManager"
 import { getUserProfiles } from "../../managers/userProfileManager"
 import { getRoomsById } from "../../managers/roomManager"
-import { Table, Button, Form, FormGroup, Label, Input } from "reactstrap"
+import { Table, Button } from "reactstrap"
 import { deleteComment } from "../../managers/commentManager"
 
 
@@ -44,10 +44,6 @@ export const ChoreDetails = ({ choreId }) => {
     }, [id])
 
 
-    // const handleDeleteComment = (event, choreId) => {
-    //     event.preventDefault()
-    //     deleteComment(choreId).then(() => { getAndSetChores() });
-    // };
     const handleDeleteComment = (event, choreId) => {
         event.preventDefault();
 
@@ -118,7 +114,7 @@ export const ChoreDetails = ({ choreId }) => {
                     <tr key={chores.id} className="detail-table">
                         <td>{chores?.comment}</td>
                         <td className="detail-table">
-                            {/* Conditionally render the delete button */}
+                            {/* Conditionally render the delete button if there is a comment to delete */}
                             {chores?.comment && (
                                 <Button color="secondary" onClick={(event) => handleDeleteComment(event, chores?.id)}>
                                     Delete Comment

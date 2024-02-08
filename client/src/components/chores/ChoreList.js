@@ -35,10 +35,12 @@ export const ChoreList = ({ loggedInUser }) => {
         navigate(`${id}/edit`);
     };
 
+    //a user can only comment on a chore they are assigned to
     const handleCommentBtn = (event, choreId) => {
         event.preventDefault();
 
         // Check if the logged-in user is associated with the chore
+        //by checking userprofile = logged in user, and that matches the chore selected
         const isUserAssociated = chores.some((chore) =>
             chore.userChores.some((userChore) => userChore.userProfileId === loggedInUser.id && userChore.choreId === choreId)
         );
@@ -46,16 +48,14 @@ export const ChoreList = ({ loggedInUser }) => {
         if (isUserAssociated) {
             navigate(`${choreId}/comment`);
         } else {
-            // User is not associated with the chore, handle accordingly (e.g., show a message)
             console.log("You are not associated with this chore.");
         }
     };
 
 
-    //search by chore works, nothing appears for search by room
     const filteredChores = chores.filter((chore) => {
         const includesSearchTerm =
-            !searchTerm ||
+            !searchTerm || //this checks if searchTerm is null, if yes then all chores are still seen
             (chore?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
             (chore?.description || '').toLowerCase().includes(searchTerm.toLowerCase());
 
@@ -81,7 +81,9 @@ export const ChoreList = ({ loggedInUser }) => {
             </div>
             <Row xs="1" sm="2" md="3" lg="4">
                 {filteredChores.map((c) => {
-                    // Declare isUserAssociated here
+                    // checks if logged in user is assigned to that chore
+                    //uses the some method to check if at least one element in the userChores array has a userProfileId that matches the loggedInUser.id
+                    //if true, all info below is returned and shown
                     const isUserAssociated = c.userChores.some((userChore) => userChore.userProfileId === loggedInUser.id);
 
                     return (
