@@ -34,3 +34,7 @@
     min-height: 100vh;
     background-size: cover;
 }
+
+.select {
+    background-color: #f2f2f2;
+  }

@@ -5,6 +5,7 @@ import { FormGroup, Label, Input, Button, Form } from "reactstrap";
 import { getRooms } from "../../managers/roomManager";
 import { getUserProfiles } from "../../managers/userProfileManager";
 import "./Chore.css";
+import "../../index.css"
 import background from "../../images/flowerbackground.jpg"
 
 export const CreateChore = () => {
@@ -89,6 +90,7 @@ export const CreateChore = () => {
                         type="select"
                         id="status"
                         onChange={(event) => setStatus(event.target.value)}
+                        className="select"
                     >
                         <option value="Status">Choose Status</option>
                         <option value="Pending">Pending</option>
@@ -107,6 +109,7 @@ export const CreateChore = () => {
                                 userProfiles.find((user) => user.id === parseInt(event.target.value))
                             )
                         }
+                        className="select"
                     >
                         <option value="">Select User</option>
                         {userProfiles.map((user) => (
@@ -124,6 +127,7 @@ export const CreateChore = () => {
                         onChange={(event) =>
                             setSelectedRoom(rooms.find((room) => room.id === parseInt(event.target.value)))
                         }
+                        className="select"
                     >
                         <option value="">Select Room</option>
                         {rooms.map((room) => (

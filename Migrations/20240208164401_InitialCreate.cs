@@ -244,12 +244,12 @@ namespace ChoreChart.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "30f21f7b-05a8-418a-ad17-c73c0c26fed7", "Admin", "admin" });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "9b89f4f6-8c96-4249-a82a-4bc793becf46", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "f08be466-b391-4b69-9644-8f282d1a1ecb", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEG0ks9POhrR7o6m+YaqhP1tBqkF44pD2JnVyKqkoRWcqiXg37HRzKMEbMmhjPB7q4A==", null, false, "2860df9c-41f5-4c61-a162-5a4d3a412ed3", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "8a8389bc-45e0-471b-93ee-e1f8ac6bc4f5", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEFbOC3L0lklu3KE0BLT3RZ4V49cVDQfD6oO9YzngMJxV3jZinR76cVByl22Hsgr4UQ==", null, false, "0a0bb96d-0876-4a85-bc8e-9d3ee4b8faf3", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "chores",
@@ -284,7 +284,7 @@ namespace ChoreChart.Migrations
             migrationBuilder.InsertData(
                 table: "UserProfiles",
                 columns: new[] { "Id", "Address", "Email", "FirstName", "IdentityUserId", "LastName" },
-                values: new object[] { 1, "101 Main Street", "admina@strator.comx", "Joe", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Shepherd" });
+                values: new object[] { 1, "444 Main Street", "admina@strator.comx", "Mikayla", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Dorado" });
 
             migrationBuilder.InsertData(
                 table: "userChores",

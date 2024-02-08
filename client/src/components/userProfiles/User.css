@@ -33,7 +33,7 @@
 }
 
 .form {
-    border: solid green;
+    /* border: solid green; */
     border-radius: 2%;
     display: flex;
     flex-direction: column;

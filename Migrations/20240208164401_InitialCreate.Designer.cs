@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChoreChart.Migrations
 {
     [DbContext(typeof(ChoreChartDbContext))]
-    [Migration("20240205150727_InitialCreate")]
+    [Migration("20240208164401_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -279,11 +279,11 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "101 Main Street",
+                            Address = "444 Main Street",
                             Email = "admina@strator.comx",
-                            FirstName = "Joe",
+                            FirstName = "Mikayla",
                             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-                            LastName = "Shepherd"
+                            LastName = "Dorado"
                         });
                 });
 
@@ -316,7 +316,7 @@ namespace ChoreChart.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "30f21f7b-05a8-418a-ad17-c73c0c26fed7",
+                            ConcurrencyStamp = "9b89f4f6-8c96-4249-a82a-4bc793becf46",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -415,13 +415,13 @@ namespace ChoreChart.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f08be466-b391-4b69-9644-8f282d1a1ecb",
+                            ConcurrencyStamp = "8a8389bc-45e0-471b-93ee-e1f8ac6bc4f5",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEG0ks9POhrR7o6m+YaqhP1tBqkF44pD2JnVyKqkoRWcqiXg37HRzKMEbMmhjPB7q4A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFbOC3L0lklu3KE0BLT3RZ4V49cVDQfD6oO9YzngMJxV3jZinR76cVByl22Hsgr4UQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2860df9c-41f5-4c61-a162-5a4d3a412ed3",
+                            SecurityStamp = "0a0bb96d-0876-4a85-bc8e-9d3ee4b8faf3",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });
