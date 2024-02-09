@@ -96,7 +96,7 @@ export const ChoreList = ({ loggedInUser }) => {
                                                 Edit
                                             </Button>
                                         </>
-                                    )}
+                                    )} 
                                 </div>
                             </Card>
                         </Col>
