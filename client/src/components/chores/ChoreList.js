@@ -6,6 +6,9 @@ import "./Chore.css";
 
 export const ChoreList = ({ loggedInUser }) => {
     const [chores, setChores] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchByRoom, setSearchByRoom] = useState("");
+
     const navigate = useNavigate();
 
     const getAndSetChores = () => {
@@ -31,10 +34,13 @@ export const ChoreList = ({ loggedInUser }) => {
         navigate(`${id}/edit`);
     };
 
+    //a user can only comment on a chore they are assigned to
     const handleCommentBtn = (event, choreId) => {
         event.preventDefault();
 
+        
         // Check if the logged-in user is associated with the chore
+        //by checking userprofile = logged in user, and that matches the chore selected
         const isUserAssociated = chores.some((chore) =>
             chore.userChores.some((userChore) => userChore.userProfileId === loggedInUser.id && userChore.choreId === choreId)
         );
@@ -47,6 +53,15 @@ export const ChoreList = ({ loggedInUser }) => {
         }
     };
 
+    const filteredChores = chores.filter((chore) => {
+        const includesSearchTerm =
+            !searchTerm || //this checks if searchTerm is null, if yes then all chores are still seen
+            (chore?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (chore?.description || '').toLowerCase().includes(searchTerm.toLowerCase());
+
+        return includesSearchTerm;
+    });
+
 
     return (
         <div className="chore-list">
@@ -56,9 +71,19 @@ export const ChoreList = ({ loggedInUser }) => {
                     Create A New Chore
                 </Button>
             )}
+            <div className="searchbar">
+            <input
+                type="text"
+                placeholder="Search Chores"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            </div>
             <Row xs="1" sm="2" md="3" lg="4">
-                {chores.map((c) => {
-                    // Declare isUserAssociated here
+                {filteredChores.map((c) => {
+                    // checks if logged in user is assigned to that chore
+                    //uses the some method to check if at least one element in the userChores array has a userProfileId that matches the loggedInUser.id
+                    //if true, all info below is returned and shown
                     const isUserAssociated = c.userChores.some((userChore) => userChore.userProfileId === loggedInUser.id);
 
                     return (

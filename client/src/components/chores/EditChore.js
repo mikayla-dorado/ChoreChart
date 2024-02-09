@@ -71,6 +71,7 @@ export const EditChore = () => {
                         value={chore?.name}
                         onChange={(event) => {
                             setChore(prevChore => ({
+                                 //creates new object based on the previous state
                                 ...prevChore,
                                 [event.target.name]: event.target.value
                             }))

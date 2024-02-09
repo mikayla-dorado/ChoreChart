@@ -199,7 +199,7 @@ public class ChoreController : ControllerBase
 
         _dbContext.SaveChanges();
 
-        // Optionally, you can return the updated chore or other relevant information
+        // return the updated chore or other relevant information
         return Ok(existingChore);
     }
 
