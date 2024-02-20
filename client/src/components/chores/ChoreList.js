@@ -60,6 +60,12 @@ export const ChoreList = ({ loggedInUser }) => {
             (chore?.description || '').toLowerCase().includes(searchTerm.toLowerCase());
 
         return includesSearchTerm;
+    })
+    .sort((a, b) => {
+        const dueDateA = new Date(a.DueDate);
+        const dueDateB = new Date(b.DueDate);
+
+        return dueDateA - dueDateB;
     });
 
 
@@ -90,6 +96,7 @@ export const ChoreList = ({ loggedInUser }) => {
                         <Col key={c.id} className="mb-4">
                             <Card>
                                 <div className="d-flex flex-column p-3">
+                                    <p>{c?.DueDate}</p>
                                     <h5>{c?.name}</h5>
                                     <p>{c?.description}</p>
                                     <Link to={`${c.id}`} className="btn btn-secondary">
