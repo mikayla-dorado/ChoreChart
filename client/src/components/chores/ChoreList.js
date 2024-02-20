@@ -61,6 +61,7 @@ export const ChoreList = ({ loggedInUser }) => {
 
         return includesSearchTerm;
     })
+    //this will sort the chores by their duedate
     .sort((a, b) => {
         const dueDateA = new Date(a.DueDate);
         const dueDateB = new Date(b.DueDate);
