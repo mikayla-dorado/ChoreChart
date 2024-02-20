@@ -40,8 +40,8 @@ export const CreateNewUser = () => {
 
     return (
         <div className="add-user" style={{ backgroundImage: `url(${background})` }}>
-            <h2 className="users">Add a New User</h2>
             <Form className="form">
+            <h2 className="users">Add a New User</h2>
                 <FormGroup>
                     <Label>First Name</Label>
                     <Input

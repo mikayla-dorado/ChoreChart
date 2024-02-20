@@ -1,25 +1,23 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 height: 100vh;
 /* background-color: black; */
 --bs-body-bg: rgba(30, 90, 30, 0.753);
+  height: 100vh;
+  font-family: 'Consolas', monospace;
+  min-height: 100vh;
+  /* background-color: rgba(30, 90, 30, 0.753); */
+  --bs-body-bg: rgba(30, 90, 30, 0.753);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-/* this is the class name given to index.html for body */
-.chores-container{
-  font-family: 'Consolas', monospace;
-  /* background-color: rgba(30, 90, 30, 0.753); */
-  /* background-color:rgba(30, 90, 30, 0.753); */
 }
 
 .dark-mode {
@@ -34,24 +32,4 @@ code {
 
 .dark-mode .form {
   background-color: black;
-}
-
-.mode-icon {
-  font-size: 2em;
-}
-
-body input[type="text"] {
-  background-color: #f2f2f2;
-}
-
-body input[type="email"] {
-  background-color: #f2f2f2;
-}
-
-body input[type="datetime-local"] {
-  background-color: #f2f2f2;
-}
-
-body input[type="password"] {
-  background-color: #f2f2f2;
 }
